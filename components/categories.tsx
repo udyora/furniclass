@@ -1,0 +1,107 @@
+import Image from "next/image";
+import Link from "next/link";
+import SectionHeading from "./common/section-heading";
+
+interface Category {
+  id: string;
+  name: string;
+  description: string;
+  image: string;
+  href: string;
+}
+
+export default function Category() {
+  const categories: Category[] = [
+    {
+      id: "chairs",
+      name: "Chairs",
+      description:
+        "Ergonomic precision meets sculptured elegance. Crafted for dining spaces, executive suites, and private residences.",
+      image:
+        "https://framerusercontent.com/images/omu7WWKCCJyngcInEeptxK9YXw.webp",
+      href: "/shop/chairs",
+    },
+    {
+      id: "sofas",
+      name: "Sofas",
+      description:
+        "Deep-seated comfort encased in architectural frameworks. Designed to serve as the anchor of sophisticated living environments.",
+      image:
+        "https://framerusercontent.com/images/HMqkXwNuVYOTAjKNrQvWJ6ZFIg.webp",
+      href: "/shop/sofas",
+    },
+    {
+      id: "tables",
+      name: "Tables",
+      description:
+        "Statement pieces carved from premium hardwoods, brushed metals, and sintered stone. Built for longevity and daily luxury.",
+      image:
+        "https://framerusercontent.com/images/E1SeXrbQeB7bVC1LQduOpuhLg.webp",
+      href: "/shop/tables",
+    },
+  ];
+
+  return (
+    <section
+      aria-labelledby="category-heading"
+      className="w-full pt-16 sm:pt-20 lg:pt-24"
+    >
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <SectionHeading
+          id="category-heading"
+          title="Browse The Range"
+          subtitle="Create beautiful, comfortable spaces with our premium furniture collection"
+        />
+
+        {/* Category Cards Grid */}
+        <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {categories.map((category) => (
+            <article
+              key={category.id}
+              className="group relative flex flex-col overflow-hidden rounded-xs bg-bg-card transition-all duration-300 hover:-translate-y-1 hover:shadow-md"
+            >
+              {/* Image Wrapper */}
+              <div className="relative aspect-4/3 w-full overflow-hidden bg-border-light">
+                <Image
+                  src={category.image}
+                  alt={`FurniClass ${category.name} collection`}
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                  className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                />
+              </div>
+
+              {/* Card Content */}
+              <div className="flex flex-1 flex-col justify-between p-3 text-center">
+                <div>
+                  <h3 className="font-quicksand text-2xl font-bold text-dark group-hover:text-primary transition-colors">
+                    <Link
+                      href={category.href}
+                      className="focus-visible:outline-2 focus-visible:outline-primary rounded-xs"
+                      aria-label={`Explore FurniClass ${category.name} category`}
+                    >
+                      <span className="absolute inset-0" aria-hidden="true" />
+                      {category.name}
+                    </Link>
+                  </h3>
+                  <p className="mt-2 font-quicksand text-sm text-muted-light leading-relaxed line-clamp-3">
+                    {category.description}
+                  </p>
+                </div>
+
+                <div className="mt-4 pt-2">
+                  <span
+                    aria-hidden="true"
+                    className="inline-flex items-center text-sm font-semibold text-primary group-hover:underline"
+                  >
+                    Explore Category &rarr;
+                  </span>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
