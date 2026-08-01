@@ -9,7 +9,7 @@ interface ShopProduct {
   id: string;
   slug: string;
   name: string;
-  category: "Dining" | "Living" | "Bedroom";
+  category: "Chairs" | "Sofas" | "Tables" | "Accessories";
   tags: string[];
   description: string;
   price: string;
@@ -22,7 +22,7 @@ const products: ShopProduct[] = [
     id: "1",
     slug: "lolito",
     name: "Lolito",
-    category: "Living",
+    category: "Sofas",
     tags: ["Furniture", "Chairs"],
     description: "A premium oversized sofa designed",
     price: "Rp 7.000.000",
@@ -34,7 +34,7 @@ const products: ShopProduct[] = [
     id: "2",
     slug: "respira",
     name: "Respira",
-    category: "Dining",
+    category: "Tables",
     tags: ["Furniture", "Dining - Table"],
     description: "A durable and stylish outdoor bar",
     price: "Rp 500.000",
@@ -44,7 +44,7 @@ const products: ShopProduct[] = [
     id: "3",
     slug: "lumo-modern-led",
     name: "Lumo – Modern LED",
-    category: "Bedroom",
+    category: "Accessories",
     tags: ["Furniture", "Dressing - Table"],
     description: "A sleek and stylish night lamp",
     price: "Rp 1.500.000",
@@ -55,7 +55,7 @@ const products: ShopProduct[] = [
     id: "4",
     slug: "muggo",
     name: "muggo",
-    category: "Living",
+    category: "Chairs",
     tags: ["Furniture", "Wooden - Wardrobe", "Chairs"],
     description: "A luxurious red velvet sofa that",
     price: "Rp 150.000",
@@ -70,7 +70,9 @@ export default function ShopPage() {
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
   const [wishlist, setWishlist] = useState<string[]>([]);
 
-  const categories = ["Dining", "Living", "Bedroom"];
+  // Strictly these 4 categories matching the screenshot
+  const categories = ["Chairs", "Sofas", "Tables", "Accessories"];
+
   const popularTags = [
     "Furniture",
     "Dining - Table",
@@ -224,7 +226,7 @@ export default function ShopPage() {
               </div>
             </aside>
 
-            {/* Product Cards Grid with Working Navigation */}
+            {/* Product Cards Grid */}
             <div className="lg:col-span-9">
               {filteredProducts.length === 0 ? (
                 <div className="bg-[#fcf8f3] p-12 text-center rounded-xs border border-[#f5ede3]">

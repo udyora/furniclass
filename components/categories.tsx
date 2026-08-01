@@ -39,6 +39,15 @@ export default function Category() {
         "https://framerusercontent.com/images/E1SeXrbQeB7bVC1LQduOpuhLg.webp",
       href: "/shop/tables",
     },
+    {
+      id: "accessories",
+      name: "Accessories",
+      description:
+        "Curated accents, ambient lamps, and decorative centerpieces designed to elevate every corner of your interior spaces.",
+      image:
+        "https://framerusercontent.com/images/16l97Qq9LwD45bmJYfNnC7HCtLM.webp",
+      href: "/shop/accessories",
+    },
   ];
 
   return (
@@ -54,7 +63,7 @@ export default function Category() {
         />
 
         {/* Category Cards Grid */}
-        <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4">
           {categories.map((category) => (
             <article
               key={category.id}

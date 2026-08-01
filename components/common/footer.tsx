@@ -13,25 +13,25 @@ export default function Footer() {
     {
       id: "instagram",
       name: "Instagram",
-      href: "https://www.instagram.com/furniclass",
+      href: "https://www.instagram.com/",
       icon: "https://framerusercontent.com/images/gIrRNDMcdyeWNl32McMpSQYEauE.svg",
     },
     {
       id: "facebook",
       name: "Facebook",
-      href: "https://www.facebook.com/furniclass",
+      href: "https://www.facebook.com/",
       icon: "https://framerusercontent.com/images/fcGDKvWXKSuezowbPCBDvFy84Mw.svg",
     },
     {
       id: "linkedin",
       name: "LinkedIn",
-      href: "https://in.linkedin.com/company/furniclass",
+      href: "https://in.linkedin.com",
       icon: "https://framerusercontent.com/images/aB9wobezBTzuzRguuweFLYqLk.svg",
     },
     {
       id: "twitter",
       name: "Twitter",
-      href: "https://x.com/furniclass",
+      href: "https://x.com",
       icon: "https://framerusercontent.com/images/68au2cTcgESYDQ2QwiKWu5MH8.svg",
     },
   ];
