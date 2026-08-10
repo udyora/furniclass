@@ -1,130 +1,173 @@
 "use client";
 
+import React from "react";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
+
 // Swiper styles import
 import "swiper/css";
 import "swiper/css/pagination";
 import Button from "./common/button";
 
-interface RoomConcept {
+interface Testimonial {
   id: string;
-  title: string;
-  image: string;
-  alt: string;
+  name: string;
+  role: string;
+  review: string;
+  rating: number;
+  avatar: string;
+  location: string;
 }
 
 export default function RoomInspiration() {
-  const concepts: RoomConcept[] = [
+  const testimonials: Testimonial[] = [
     {
-      id: "living-room",
-      title: "Modern Minimalist Living Room",
-      image:
+      id: "t1",
+      name: "Ananya Sharma",
+      role: "Interior Stylist",
+      location: "Delhi NCR",
+      review:
+        "The build-to-order craftsmanship is exceptional. The customized L-shaped sofa matched our client's penthouse interior seamlessly. Timely delivery and premium finishing!",
+      rating: 5,
+      avatar:
         "https://framerusercontent.com/images/16l97Qq9LwD45bmJYfNnC7HCtLM.webp",
-      alt: "FurniClass custom living room setup with modern sofa and decor",
     },
     {
-      id: "dining-room",
-      title: "Contemporary Dining Setup",
-      image:
+      id: "t2",
+      name: "Rajesh Verma",
+      role: "Homeowner",
+      location: "Mumbai",
+      review:
+        "From selecting custom fabric options to final installation, FurniClass made the entire process effortless. The solid wood dining table is now the star attraction of our home.",
+      rating: 5,
+      avatar:
         "https://framerusercontent.com/images/M5UOPtlamIUkwnieQ3yYAxPFskc.webp",
-      alt: "FurniClass bespoke dining table and chairs setup",
     },
     {
-      id: "bedroom-suite",
-      title: "Luxury Bedroom Suite",
-      image:
+      id: "t3",
+      name: "Priya Sundaram",
+      role: "Architect",
+      location: "Bengaluru",
+      review:
+        "Finding bespoke furniture with precise custom dimensions used to be a hassle. FurniClass exceeded all our expectations for our modern villa project.",
+      rating: 5,
+      avatar:
         "https://framerusercontent.com/images/omu7WWKCCJyngcInEeptxK9YXw.webp",
-      alt: "FurniClass master bedroom custom headboard and side tables",
     },
     {
-      id: "outdoor-lounge",
-      title: "Serene Patio Lounge",
-      image:
+      id: "t4",
+      name: "Vikramaditya Rathore",
+      role: "Boutique Hotelier",
+      location: "Jaipur",
+      review:
+        "The handcrafted velvet armchairs elevated our lounge aesthetics immediately. Superb durability and high-end aesthetic appeal for luxury commercial spaces.",
+      rating: 5,
+      avatar:
         "https://framerusercontent.com/images/HMqkXwNuVYOTAjKNrQvWJ6ZFIg.webp",
-      alt: "FurniClass weather-resistant outdoor lounge furniture",
     },
   ];
 
   return (
     <section
-      aria-labelledby="room-inspiration-heading"
-      className="w-full bg-bg-cream py-16 sm:py-20 lg:py-24 overflow-hidden"
+      id="testimonials"
+      aria-labelledby="testimonials-heading"
+      className="w-full bg-bg-cream py-16 sm:py-20 lg:py-24 mt-20 overflow-hidden"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-8">
+        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-10">
           {/* Left Content Column */}
-          <div className="lg:col-span-5">
-            <span className="font-quicksand text-sm font-semibold tracking-widest text-primary uppercase">
-              Design Gallery
-            </span>
+          <div className="lg:col-span-6">
+            <div className="font-quicksand max-lg:text-center text-sm font-bold tracking-widest text-primary uppercase">
+              Client Feedback
+            </div>
 
             <h2
-              id="room-inspiration-heading"
-              className="mt-3 font-quicksand text-3xl font-bold text-dark sm:text-4xl leading-tight"
+              id="testimonials-heading"
+              className="mt-3 font-quicksand max-lg:text-center text-3xl font-bold text-dark sm:text-4xl lg:text-[40px] leading-tight"
             >
-              Curated Concepts for Modern Living
+              Loved by Indian Homeowners &amp; Designers
             </h2>
-            <p className="mt-4 font-quicksand text-base font-medium text-dark-subtle sm:text-lg leading-relaxed">
-              Every room tells a story of spatial harmony. Browse through
-              thoughtfully arranged interior concepts designed to spark
-              inspiration for your next residential or commercial project.
+            <p className="mt-4 font-quicksand max-lg:text-center text-base sm:text-lg font-normal text-muted-light leading-relaxed">
+              Read real stories from our valued homeowners, architects, and
+              interior stylists across India who transformed their living spaces
+              with our bespoke build-to-order furniture collection.
             </p>
 
-            <div className="mt-8">
+            <div className="mt-8 max-lg:flex max-lg:justify-center">
               <Button
-                href="/gallery"
+                href="/contact-us"
                 variant="primary"
                 size="md"
-                ariaLabel="View all interior concepts created with FurniClass furniture"
+                ariaLabel="Enquire for custom furniture built by FurniClass"
               >
-                View Interior Concepts
+                Start Custom Order
               </Button>
             </div>
           </div>
 
-          <div className="lg:col-span-7 w-full overflow-hidden">
+          {/* Right Swiper Carousel Column */}
+          <div className="lg:col-span-6 w-full overflow-hidden">
             <Swiper
               modules={[Autoplay, Pagination]}
               spaceBetween={24}
               slidesPerView={1}
               loop={true}
               autoplay={{
-                delay: 3500,
+                delay: 4500,
                 disableOnInteraction: false,
               }}
               pagination={{
                 clickable: true,
                 el: ".custom-swiper-pagination",
               }}
-              breakpoints={{
-                640: {
-                  slidesPerView: 1.8,
-                },
-                1024: {
-                  slidesPerView: 2.2,
-                },
-              }}
               className="w-full pb-6!"
             >
-              {concepts.map((concept) => (
-                <SwiperSlide key={concept.id}>
-                  <div className="relative aspect-3/4 w-full overflow-hidden rounded-xs bg-bg-card shadow-md">
-                    <Image
-                      src={concept.image}
-                      alt={concept.alt}
-                      fill
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      className="object-cover object-center transition-transform duration-500 hover:scale-105"
-                      priority
-                    />
+              {testimonials.map((item) => (
+                <SwiperSlide key={item.id} className="!h-auto flex">
+                  {/* Card with White Background & Equal Height */}
+                  <div className="relative flex flex-col justify-between h-full w-full p-6 sm:p-8 sm:min-h-[320px] overflow-hidden rounded-xs bg-white shadow-xs border border-border-light font-quicksand">
+                    {/* Top Content */}
+                    <div>
+                      {/* Rating Stars */}
+                      <div className="flex text-gold text-lg gap-1 mb-4">
+                        {Array.from({ length: item.rating }).map((_, i) => (
+                          <span key={i}>★</span>
+                        ))}
+                      </div>
+
+                      {/* Review Quote */}
+                      <p className="text-dark font-medium text-base sm:text-lg leading-relaxed">
+                        &ldquo;{item.review}&rdquo;
+                      </p>
+                    </div>
+
+                    {/* User Profile Footer */}
+                    <div className="flex items-center gap-4 pt-6 border-t border-border-light mt-6">
+                      <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-full border-2 border-gold">
+                        <Image
+                          src={item.avatar}
+                          alt={item.name}
+                          fill
+                          sizes="56px"
+                          className="object-cover object-center"
+                        />
+                      </div>
+                      <div>
+                        <h3 className="font-bold text-dark text-base sm:text-lg leading-tight">
+                          {item.name}
+                        </h3>
+                        <p className="text-xs sm:text-sm text-muted-light font-medium mt-0.5">
+                          {item.role} • {item.location}
+                        </p>
+                      </div>
+                    </div>
                   </div>
                 </SwiperSlide>
               ))}
             </Swiper>
 
-            <div className="custom-swiper-pagination flex items-center justify-center sm:justify-start gap-2 pl-1! pb-4! [&_.swiper-pagination-bullet]:h-4! [&_.swiper-pagination-bullet]:w-4! [&_.swiper-pagination-bullet]:bg-gold/40 [&_.swiper-pagination-bullet-active]:bg-gold! [&_.swiper-pagination-bullet-active]:scale-125 [&_.swiper-pagination-bullet]:transition-all" />
+            <div className="custom-swiper-pagination flex items-center justify-center sm:justify-start gap-2 pl-1! pt-4! pb-2! [&_.swiper-pagination-bullet]:h-3.5! [&_.swiper-pagination-bullet]:w-3.5! [&_.swiper-pagination-bullet]:bg-gold/40 [&_.swiper-pagination-bullet-active]:bg-gold! [&_.swiper-pagination-bullet-active]:scale-125 [&_.swiper-pagination-bullet]:transition-all" />
           </div>
         </div>
       </div>

@@ -1,6 +1,9 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import Button from "../common/button";
+
 interface FeaturePoint {
   id: string;
   text: string;
@@ -9,6 +12,7 @@ interface FeaturePoint {
 interface MiniCategory {
   id: string;
   title: string;
+  slug: string;
   image: string;
 }
 
@@ -21,35 +25,45 @@ export default function AboutHero() {
 
   const categories: MiniCategory[] = [
     {
-      id: "sofa",
-      title: "Sofa",
+      id: "chairs",
+      title: "Chairs",
+      slug: "chairs",
+      image:
+        "https://framerusercontent.com/images/omu7WWKCCJyngcInEeptxK9YXw.webp",
+    },
+    {
+      id: "sofas",
+      title: "Sofas",
+      slug: "sofas",
       image:
         "https://framerusercontent.com/images/HMqkXwNuVYOTAjKNrQvWJ6ZFIg.webp",
     },
     {
-      id: "nightstand",
-      title: "Nightstand",
+      id: "tables",
+      title: "Tables",
+      slug: "tables",
       image:
         "https://framerusercontent.com/images/E1SeXrbQeB7bVC1LQduOpuhLg.webp",
     },
     {
-      id: "bedroom",
-      title: "Bedroom",
+      id: "accessories",
+      title: "Accessories",
+      slug: "accessories",
       image:
-        "https://framerusercontent.com/images/omu7WWKCCJyngcInEeptxK9YXw.webp",
+        "https://framerusercontent.com/images/16l97Qq9LwD45bmJYfNnC7HCtLM.webp",
     },
   ];
 
   return (
     <section
       aria-labelledby="about-hero-heading"
-      className="w-full bg-bg-main py-12 sm:py-16 lg:py-20 font-quicksand"
+      className="w-full bg-bg-main pt-6 pb-12 sm:pb-16 lg:pb-20 font-quicksand"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Top Split Content Section */}
-        <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-12">
+        <div className="grid grid-cols-1 items-center justify-items-center gap-10 lg:grid-cols-12 lg:gap-12 text-center lg:text-left">
           {/* Left Text Column */}
-          <div className="lg:col-span-6">
+          <div className="lg:col-span-6 flex flex-col items-center lg:items-start text-center lg:text-left">
             <h2
               id="about-hero-heading"
               className="font-quicksand text-3xl font-bold text-dark sm:text-4xl lg:text-[40px] leading-tight"
@@ -68,7 +82,7 @@ export default function AboutHero() {
 
             {/* Checkmark Features List */}
             <ul
-              className="mt-6 space-y-3.5"
+              className="mt-6 space-y-3.5 flex flex-col items-center lg:items-start"
               aria-label="FurniClass core quality features"
             >
               {features.map((feature) => (
@@ -97,13 +111,13 @@ export default function AboutHero() {
               ))}
             </ul>
 
-            {/* Enquire Now CTA Redirecting to /shop */}
+            {/* Enquire CTA Button */}
             <div className="mt-8">
               <Button
-                href="/shop"
+                href="/categories/sofas"
                 variant="primary"
                 size="md"
-                ariaLabel="Enquire about FurniClass products on shop page"
+                ariaLabel="Explore FurniClass categories"
               >
                 Enquire Now
               </Button>
@@ -111,8 +125,8 @@ export default function AboutHero() {
           </div>
 
           {/* Right Showcase Image Container */}
-          <div className="lg:col-span-6">
-            <div className="relative aspect-4/3 w-full overflow-hidden rounded-xs bg-bg-card shadow-md">
+          <div className="lg:col-span-6 w-full flex justify-center">
+            <div className="relative aspect-4/3 w-full max-w-lg lg:max-w-none overflow-hidden rounded-xs bg-bg-card shadow-md">
               <Image
                 src="https://framerusercontent.com/images/16l97Qq9LwD45bmJYfNnC7HCtLM.webp"
                 alt="FurniClass luxury interior setup demonstrating craftsmanship"
@@ -125,37 +139,37 @@ export default function AboutHero() {
           </div>
         </div>
 
-        {/* Bottom Category Cards Grid (All Redirect to /shop) */}
-        <div className="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-3 lg:gap-8">
+        {/* Bottom 4 Category Cards Grid */}
+        <div className="mt-16 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 lg:gap-6">
           {categories.map((cat) => (
             <div
               key={cat.id}
-              className="group relative flex items-center justify-between overflow-hidden rounded-xs bg-bg-card p-6 shadow-xs border border-border-light transition-all hover:shadow-md"
+              className="group relative flex flex-col justify-between overflow-hidden bg-bg-card border border-border-light shadow-xs transition-all duration-300 hover:shadow-md hover:-translate-y-1"
             >
-              {/* Category Info & See More Button */}
-              <div className="flex flex-col items-start gap-4 z-10">
+              {/* 1. Full-Width Image Container */}
+              <div className="relative aspect-4/3 w-full overflow-hidden bg-gray-100">
+                <Image
+                  src={cat.image}
+                  alt={`FurniClass ${cat.title}`}
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                  className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                />
+              </div>
+
+              {/* 2. Content Section Below Image */}
+              <div className="flex flex-col items-center p-4 lg:p-5 text-center gap-1 lg:gap-3">
                 <h3 className="font-quicksand text-xl font-bold text-dark">
                   {cat.title}
                 </h3>
 
                 <Link
-                  href="/shop"
-                  aria-label={`Explore ${cat.title} collection on shop page`}
-                  className="inline-flex items-center justify-center bg-primary px-4 py-2 font-quicksand text-xs font-semibold text-white transition-colors hover:bg-primary-hover rounded-xs focus-visible:outline-2 focus-visible:outline-primary"
+                  href={`/categories/${cat.slug}`}
+                  aria-label={`Explore ${cat.title} category`}
+                  className="inline-flex items-center justify-center bg-primary hover:bg-primary-hover text-white font-quicksand text-xs font-bold px-6 py-2.5 rounded-sm transition-colors shadow-xs"
                 >
                   See More
                 </Link>
-              </div>
-
-              {/* Product Thumbnail Image */}
-              <div className="relative h-28 w-28 shrink-0 overflow-hidden">
-                <Image
-                  src={cat.image}
-                  alt={`FurniClass ${cat.title}`}
-                  fill
-                  sizes="112px"
-                  className="object-contain object-center transition-transform duration-300 group-hover:scale-105"
-                />
               </div>
             </div>
           ))}

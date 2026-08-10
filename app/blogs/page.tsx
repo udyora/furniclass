@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import PageBanner from "@/components/common/page-banner";
 import BlogSidebar from "@/components/blogs/blog-sidebar";
+import SectionHeading from "@/components/common/section-heading";
 
 export const metadata: Metadata = {
   title: "Blogs & Interior Insights | FurniClass",
@@ -87,9 +88,13 @@ const posts: BlogPost[] = [
 export default function BlogsPage() {
   return (
     <main className="min-h-screen font-quicksand bg-bg-main pb-20">
-      <PageBanner title="Blogs" breadcrumb="Blogs" />
-
-      <section className="py-12 sm:py-16">
+      <PageBanner />
+      <SectionHeading
+        className="pt-12"
+        title="Blogs"
+        subtitle="FurniClass Blogs Where you can fetch out more info about furniture."
+      />
+      <section className="pb-12 pt-6 sm:pb-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 items-start">
             {/* Main Blog Grid Area */}

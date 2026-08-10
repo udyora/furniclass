@@ -12,12 +12,12 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <main className="min-h-screen font-quicksand bg-bg-main pb-20">
-      <PageBanner title="Contact Us" breadcrumb="Contact Us" />
+      <PageBanner />
 
-      <section className="py-12 sm:py-16">
+      <section className="py-12 sm:pb-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           {/* Header Text */}
-          <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+          <div className="text-center max-w-3xl mx-auto mb-6">
             <h2 className="text-3xl sm:text-4xl font-bold text-primary">
               Get In Touch With Us
             </h2>

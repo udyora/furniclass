@@ -1,3 +1,4 @@
+import SectionHeading from "@/components/common/section-heading";
 import GalleryGrid from "@/components/gallery/gallery-grid";
 import { Metadata } from "next";
 

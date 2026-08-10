@@ -1,23 +1,63 @@
 "use client";
 
 import React, { useState } from "react";
+import { useMutation } from "@tanstack/react-query";
+import { enquiriesService } from "@/services/enquiriesService";
+import { CustomToast } from "@/components/common/toast";
+import { Loader2 } from "lucide-react";
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
-    orderType: "customized", // 'quick' | 'customized'
     quantity: 1,
     location: "",
-    message: "",
-    image: null as File | null,
+    details: "",
+    referenceImageUrl: "",
+  });
+
+  const [toast, setToast] = useState<{
+    message: string;
+    type: "success" | "error";
+  } | null>(null);
+
+  const submitMutation = useMutation({
+    mutationFn: enquiriesService.createEnquiry,
+    onSuccess: () => {
+      setToast({
+        message: "Thank you! Your custom order enquiry has been received.",
+        type: "success",
+      });
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        quantity: 1,
+        location: "",
+        details: "",
+        referenceImageUrl: "",
+      });
+    },
+    onError: (error: Error) => {
+      setToast({
+        message: error.message || "Failed to submit enquiry. Please try again.",
+        type: "error",
+      });
+    },
   });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form Submitted:", formData);
-    alert("Thank you! Your order inquiry has been received.");
+    submitMutation.mutate({
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      productName: "Contact Us Page Inquiry",
+      quantity: Number(formData.quantity) || 1,
+      location: formData.location,
+      details: formData.details,
+    });
   };
 
   return (
@@ -25,51 +65,15 @@ export default function ContactForm() {
       onSubmit={handleSubmit}
       className="bg-bg-card p-6 sm:p-10 rounded-xs border border-border-light font-quicksand space-y-6"
     >
-      {/* Order Type Selection */}
-      <div>
-        <label className="block text-sm font-bold text-dark mb-2">
-          What type of order do you need?
-        </label>
-        <div className="grid grid-cols-2 gap-4">
-          <button
-            type="button"
-            onClick={() =>
-              setFormData((prev) => ({ ...prev, orderType: "quick" }))
-            }
-            className={`py-3 px-4 text-xs sm:text-sm font-bold rounded-xs border transition-all cursor-pointer ${
-              formData.orderType === "quick"
-                ? "bg-primary text-white border-primary"
-                : "bg-white text-dark border-border-light hover:border-primary/50"
-            }`}
-          >
-            Quick Order
-          </button>
-          <button
-            type="button"
-            onClick={() =>
-              setFormData((prev) => ({ ...prev, orderType: "customized" }))
-            }
-            className={`py-3 px-4 text-xs sm:text-sm font-bold rounded-xs border transition-all cursor-pointer ${
-              formData.orderType === "customized"
-                ? "bg-primary text-white border-primary"
-                : "bg-white text-dark border-border-light hover:border-primary/50"
-            }`}
-          >
-            Order Customized Furniture
-          </button>
-        </div>
-      </div>
-
-      {/* Name */}
       <div>
         <label
-          htmlFor="name"
+          htmlFor="contact-name"
           className="block text-sm font-semibold text-dark mb-1.5"
         >
           Your Name *
         </label>
         <input
-          id="name"
+          id="contact-name"
           type="text"
           required
           placeholder="Enter your full name"
@@ -81,17 +85,16 @@ export default function ContactForm() {
         />
       </div>
 
-      {/* Email & Phone Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
         <div>
           <label
-            htmlFor="email"
+            htmlFor="contact-email"
             className="block text-sm font-semibold text-dark mb-1.5"
           >
             Email Address *
           </label>
           <input
-            id="email"
+            id="contact-email"
             type="email"
             required
             placeholder="Abc@def.com"
@@ -105,13 +108,13 @@ export default function ContactForm() {
 
         <div>
           <label
-            htmlFor="phone"
+            htmlFor="contact-phone"
             className="block text-sm font-semibold text-dark mb-1.5"
           >
             Phone Number *
           </label>
           <input
-            id="phone"
+            id="contact-phone"
             type="tel"
             required
             placeholder="+91 98765 43210"
@@ -124,40 +127,38 @@ export default function ContactForm() {
         </div>
       </div>
 
-      {/* Reference Image Upload */}
       <div>
         <label
-          htmlFor="reference-image"
+          htmlFor="reference-url"
           className="block text-sm font-semibold text-dark mb-1.5"
         >
-          Upload Reference Image{" "}
-          {formData.orderType === "customized" && "(Recommended)"}
+          Reference Image URL (Optional)
         </label>
         <input
-          id="reference-image"
-          type="file"
-          accept="image/*"
+          id="reference-url"
+          type="url"
+          placeholder="https://images.com/sample-furniture.jpg"
+          value={formData.referenceImageUrl}
           onChange={(e) =>
             setFormData((prev) => ({
               ...prev,
-              image: e.target.files ? e.target.files[0] : null,
+              referenceImageUrl: e.target.value,
             }))
           }
-          className="w-full bg-white border border-border-light rounded-xs p-2 text-xs text-muted-light cursor-pointer file:mr-4 file:py-2 file:px-4 file:rounded-xs file:border-0 file:text-xs file:font-semibold file:bg-primary file:text-white hover:file:bg-primary-hover"
+          className="w-full bg-white border border-border-light rounded-xs px-4 py-3 text-sm text-dark focus:outline-none focus:border-primary transition-colors"
         />
       </div>
 
-      {/* Quantity & Location Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
         <div>
           <label
-            htmlFor="quantity"
+            htmlFor="contact-qty"
             className="block text-sm font-semibold text-dark mb-1.5"
           >
             Quantity
           </label>
           <input
-            id="quantity"
+            id="contact-qty"
             type="number"
             min={1}
             value={formData.quantity}
@@ -173,13 +174,13 @@ export default function ContactForm() {
 
         <div>
           <label
-            htmlFor="location"
+            htmlFor="contact-location"
             className="block text-sm font-semibold text-dark mb-1.5"
           >
             Delivery Location / City *
           </label>
           <input
-            id="location"
+            id="contact-location"
             type="text"
             required
             placeholder="e.g. Faridabad, Delhi NCR"
@@ -192,35 +193,48 @@ export default function ContactForm() {
         </div>
       </div>
 
-      {/* Textarea / Additional Details */}
       <div>
         <label
-          htmlFor="message"
+          htmlFor="contact-details"
           className="block text-sm font-semibold text-dark mb-1.5"
         >
           Order Details &amp; Custom Specifications
         </label>
         <textarea
-          id="message"
+          id="contact-details"
           rows={4}
           placeholder="Hi! Mention required dimensions, material, or specific customization requirements..."
-          value={formData.message}
+          value={formData.details}
           onChange={(e) =>
-            setFormData((prev) => ({ ...prev, message: e.target.value }))
+            setFormData((prev) => ({ ...prev, details: e.target.value }))
           }
           className="w-full bg-white border border-border-light rounded-xs px-4 py-3 text-sm text-dark focus:outline-none focus:border-primary transition-colors resize-none"
         />
       </div>
 
-      {/* Submit Button */}
       <div>
         <button
           type="submit"
-          className="bg-primary hover:bg-primary-hover text-white font-bold text-sm px-10 py-3.5 rounded-xs transition-colors shadow-xs cursor-pointer"
+          disabled={submitMutation.isPending}
+          className="bg-primary hover:bg-primary-hover text-white font-bold text-sm px-10 py-3.5 rounded-xs transition-colors shadow-xs cursor-pointer flex items-center justify-center gap-2 disabled:opacity-50"
         >
-          Submit Inquiry
+          {submitMutation.isPending ? (
+            <>
+              <Loader2 className="w-4 h-4 animate-spin" /> Submitting...
+            </>
+          ) : (
+            "Submit Inquiry"
+          )}
         </button>
       </div>
+
+      {toast && (
+        <CustomToast
+          message={toast.message}
+          type={toast.type}
+          onClose={() => setToast(null)}
+        />
+      )}
     </form>
   );
 }

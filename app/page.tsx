@@ -11,10 +11,8 @@ export default function Home() {
     <>
       <Hero />
       <Category />
-      <FeaturedProducts />
       <RoomInspiration />
-      <GallerySection />
-      <Blogs />
+      {/* <FeaturedProducts /> */}
     </>
   );
 }

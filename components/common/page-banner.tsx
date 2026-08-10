@@ -1,82 +1,141 @@
-import Link from "next/link";
+"use client";
+
+import React, { useState } from "react";
 import Image from "next/image";
+import { X } from "lucide-react";
 
-interface PageBannerProps {
-  title?: string;
-  breadcrumb?: string;
-  bgImage?: string;
-}
+const fixedImage = {
+  src: "/furniclass-logo.png",
+  alt: "Furniclass Logo",
+};
 
-export default function PageBanner({
-  title = "About US",
-  breadcrumb = "About Us",
-  bgImage = "https://framerusercontent.com/images/QJMIMeriVCuJUHEsVBBsdcuOM9I.webp",
-}: PageBannerProps) {
+const galleryImages = [
+  {
+    src: "https://framerusercontent.com/images/3GB2Pah9N4LedXnHFT9WWE6Gsk.webp?width=4096&height=2731",
+    alt: "Lolito Sofa",
+  },
+  {
+    src: "https://framerusercontent.com/images/0Kfs9A2Cvwm44Nc7dTXsN9Y.jpg?width=3264&height=3264",
+    alt: "Respira Outdoor Set",
+  },
+  {
+    src: "https://framerusercontent.com/images/vWOtRRHqHqC3nccZYSpVnQX30E0.webp?width=4096&height=2732",
+    alt: "Lumo Night Lamp",
+  },
+  {
+    src: "https://framerusercontent.com/images/omu7WWKCCJyngcInEeptxK9YXw.webp?width=415&height=500",
+    alt: "Dining Furniture",
+  },
+  {
+    src: "https://framerusercontent.com/images/HMqkXwNuVYOTAjKNrQvWJ6ZFIg.webp?width=414&height=500",
+    alt: "Living Room Setup",
+  },
+  {
+    src: "https://framerusercontent.com/images/E1SeXrbQeB7bVC1LQduOpuhLg.webp?width=415&height=500",
+    alt: "Bedroom Furniture",
+  },
+  {
+    src: "https://framerusercontent.com/images/16l97Qq9LwD45bmJYfNnC7HCtLM.webp?width=415&height=550",
+    alt: "Interior Room Inspiration 1",
+  },
+  {
+    src: "https://framerusercontent.com/images/M5UOPtlamIUkwnieQ3yYAxPFskc.webp?width=415&height=550",
+    alt: "Interior Room Inspiration 2",
+  },
+  {
+    src: "https://framerusercontent.com/images/qzRnfwWaiU5GfrtihylFXPP6vc.webp?width=414&height=550",
+    alt: "Interior Room Inspiration 3",
+  },
+  {
+    src: "https://framerusercontent.com/images/fqDYm6jymxWJSNIUFSEjk9RKWvs.jpg?width=7342&height=4900",
+    alt: "Natural Light Interior",
+  },
+];
+
+export default function Hero() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const marqueeItems = [...galleryImages, ...galleryImages];
+
   return (
-    <section
-      aria-labelledby="page-banner-title"
-      className="relative w-full overflow-hidden bg-dark py-16 sm:py-20 lg:py-24 font-quicksand"
-    >
-      {/* Background Image Container with decorative aria-hidden */}
-      <div className="absolute inset-0 z-0" aria-hidden="true">
-        <Image
-          src={bgImage}
-          alt="" // Decorative background, main context is in the heading
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-center"
-        />
-        {/* Dark Overlay for Text Contrast */}
-        <div className="absolute inset-0 bg-black/65" />
-      </div>
+    <>
+      <section
+        aria-labelledby="hero-heading"
+        className="w-full overflow-x-hidden pt-8 sm:pt-12 font-quicksand"
+      >
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          {/* Main Wrapper with Fixed Left Image + Marquee Slider */}
+          <div className="flex items-center gap-3 sm:gap-4 mb-8 overflow-hidden">
+            {/* 1. Fixed Left Image (Clickable) */}
+            <div
+              onClick={() => setIsModalOpen(true)}
+              className="relative size-28 bg-primary sm:h-35 sm:w-35 shrink-0 z-20 overflow-hidden border border-border-light p-1 shadow-md cursor-pointer hover:scale-105 active:scale-95 transition-all duration-200"
+              role="button"
+              tabIndex={0}
+            >
+              <Image
+                src={fixedImage.src}
+                alt={fixedImage.alt}
+                fill
+                sizes="(max-width: 640px) 112px, 140px"
+                className="object-contain rounded-full"
+                unoptimized
+              />
+            </div>
 
-      {/* Banner Content Container */}
-      <div className="relative z-10 mx-auto flex max-w-7xl flex-col items-center justify-center px-4 text-center sm:px-6 lg:px-8">
-        {/* Main H1 Title for Page Level SEO */}
-        <h1
-          id="page-banner-title"
-          className="font-quicksand text-3xl font-bold text-gold sm:text-4xl lg:text-5xl tracking-wide"
+            {/* 2. Marquee Wrapper for Sliding Images */}
+            <div className="relative flex-1 overflow-hidden">
+              <div className="animate-marquee flex gap-3 sm:gap-4 items-center w-max">
+                {marqueeItems.map((item, index) => (
+                  <div
+                    key={index}
+                    className="relative h-28 sm:h-35 w-40 sm:w-50 shrink-0 overflow-hidden border border-border-light shadow-xs transition-transform duration-300 hover:scale-[1.03]"
+                  >
+                    <Image
+                      src={item.src}
+                      alt={item.alt}
+                      fill
+                      sizes="(max-width: 640px) 160px, 200px"
+                      className="object-cover"
+                      unoptimized
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 3. Blue Backdrop Image Modal */}
+      {isModalOpen && (
+        <div
+          onClick={() => setIsModalOpen(false)}
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md p-4 transition-all duration-300"
         >
-          {title}
-        </h1>
+          {/* Close Button */}
+          <button
+            onClick={() => setIsModalOpen(false)}
+            className="absolute top-6 right-6 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer"
+            aria-label="Close modal"
+          >
+            <X className="w-6 h-6" />
+          </button>
 
-        {/* Semantic Breadcrumb Navigation for Crawlers */}
-        <nav aria-label="Breadcrumb Navigation" className="mt-3 sm:mt-4">
-          <ol className="inline-flex items-center gap-2 text-sm font-medium text-white/90 sm:text-base">
-            <li>
-              <Link
-                href="/"
-                aria-label="Navigate back to FurniClass Homepage"
-                className="hover:text-gold transition-colors focus-visible:outline-2 focus-visible:outline-gold focus-visible:outline-offset-2 rounded-xs"
-              >
-                Home
-              </Link>
-            </li>
-
-            {/* Visual Separator */}
-            <li aria-hidden="true" className="text-white/60 select-none">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="h-3.5 w-3.5 text-white/70"
-              >
-                <path d="m9 18 6-6-6-6" />
-              </svg>
-            </li>
-
-            {/* Active Current Page */}
-            <li className="text-white/80 font-normal" aria-current="page">
-              {breadcrumb}
-            </li>
-          </ol>
-        </nav>
-      </div>
-    </section>
+          {/* Modal Enlarged Logo Container */}
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="relative w-full max-w-md sm:max-w-lg aspect-square bg-primary border-2 border-white/20 shadow-2xl overflow-hidden"
+          >
+            <Image
+              src={fixedImage.src}
+              alt={fixedImage.alt}
+              fill
+              className="object-contain"
+              unoptimized
+            />
+          </div>
+        </div>
+      )}
+    </>
   );
 }

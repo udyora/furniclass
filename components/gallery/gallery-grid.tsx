@@ -6,6 +6,7 @@ import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import Button from "@/components/common/button";
 import PageBanner from "../common/page-banner";
+import SectionHeading from "../common/section-heading";
 
 interface GalleryImage {
   id: string;
@@ -58,12 +59,17 @@ export default function GalleryGrid() {
   return (
     <>
       {/* Reusable Common Page Banner */}
-      <PageBanner title="Gallery" breadcrumb="Gallery" />
+      <PageBanner />
 
+      <SectionHeading
+        className="pt-12"
+        title="Gallery"
+        subtitle="FurniClass Portfolio Gallery"
+      />
       {/* Main Gallery Grid Section */}
       <section
         aria-labelledby="gallery-grid-heading"
-        className="w-full bg-bg-main py-16 sm:py-20 font-quicksand"
+        className="w-full bg-bg-main pt-6 pb-16 sm:pb-20 font-quicksand"
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <h2 id="gallery-grid-heading" className="sr-only">

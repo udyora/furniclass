@@ -2,25 +2,25 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
-  const [isLoggedIn] = useState(false);
 
   const navLinks = [
     { name: "Home", href: "/" },
     { name: "About Us", href: "/about-us" },
-    { name: "Shop", href: "/shop" },
     { name: "Gallery", href: "/gallery" },
+    // { name: "Testimonials", href: "/#testimonials" },
     { name: "Blogs", href: "/blogs" },
     { name: "Contact Us", href: "/contact-us" },
   ];
 
   const checkIsActive = (href: string) => {
     if (href === "/") return pathname === "/";
+    if (href.startsWith("/#")) return false;
     return pathname.startsWith(href);
   };
 
@@ -30,19 +30,30 @@ export default function Navbar() {
         {/* Brand Logo Link */}
         <Link
           href="/"
-          aria-label="FurniClass - Return to Homepage"
-          className="flex items-center"
+          className="inline-flex items-center gap-3 text-dark hover:opacity-95 transition-opacity"
         >
           <Image
+            width={28}
+            height={28}
             src="/logo.svg"
-            alt="FurniClass Custom & Luxury Furniture Logo"
-            width={120}
-            height={56}
-            priority
-            className="w-36 sm:w-40 object-contain object-left"
+            alt="Furniclass Logo"
+            className="object-contain"
           />
-        </Link>
+          <div className="flex flex-col">
+            {/* Domain Name */}
+            <span className="font-quicksand text-lg font-extrabold tracking-tight text-dark leading-none">
+              furniclass<span className="text-primary">.com</span>
+            </span>
 
+            {/* Attractive Center Underline / Divider */}
+            <span className="my-1 h-0.5 w-full rounded-full bg-linear-to-r from-primary via-gold to-transparent opacity-80" />
+
+            {/* Subtitle */}
+            <span className="font-quicksand text-xs font-bold uppercase text-muted-light leading-none">
+              Premium Make To Order Studio
+            </span>
+          </div>
+        </Link>
         {/* Primary Navigation for lg Screens */}
         <nav
           aria-label="Main Navigation"
@@ -74,100 +85,50 @@ export default function Navbar() {
           </ul>
         </nav>
 
-        {/* Action Controls */}
-        <div className="flex items-center gap-4">
-          {/* User Account Button */}
-          <Link
-            href="/my-account"
-            aria-label={
-              isLoggedIn
-                ? "Access your FurniClass account"
-                : "Log in or access FurniClass account"
-            }
-            className="relative p-2 text-dark hover:text-primary transition-colors focus-visible:outline-2 focus-visible:outline-primary rounded-xs"
-          >
-            <div className="relative flex items-center justify-center">
-              <svg
-                className="h-6 w-6"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"
-                />
-              </svg>
-
-              {!isLoggedIn && (
-                <div
-                  title="Logged Out"
-                  className="absolute -bottom-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-primary text-white shadow-xs"
-                >
-                  <svg
-                    className="h-2.5 w-2.5"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2.5"
-                    viewBox="0 0 24 24"
-                    aria-hidden="true"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
-                    />
-                  </svg>
-                </div>
-              )}
-            </div>
-          </Link>
-
-          {/* Mobile/Tablet Hamburger Toggle */}
-          <button
-            type="button"
-            onClick={() => setIsOpen(!isOpen)}
-            aria-label={
-              isOpen
-                ? "Close main navigation menu"
-                : "Open main navigation menu"
-            }
-            aria-expanded={isOpen}
-            aria-controls="mobile-navigation"
-            className="p-2 text-dark hover:text-primary focus-visible:outline-2 focus-visible:outline-primary rounded-xs lg:hidden cursor-pointer"
-          >
+        {/* Mobile Hamburger Toggle Button */}
+        <button
+          type="button"
+          onClick={() => setIsOpen((prev) => !prev)}
+          className="inline-flex items-center justify-center rounded-md p-2 text-dark hover:bg-bg-card hover:text-primary lg:hidden cursor-pointer"
+          aria-expanded={isOpen}
+          aria-controls="mobile-navigation"
+          aria-label="Toggle menu"
+        >
+          {isOpen ? (
             <svg
               className="h-6 w-6"
               fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
               viewBox="0 0 24 24"
-              aria-hidden="true"
+              strokeWidth="2"
+              stroke="currentColor"
             >
-              {isOpen ? (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              ) : (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-                />
-              )}
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M6 18L18 6M6 6l12 12"
+              />
             </svg>
-          </button>
-        </div>
+          ) : (
+            <svg
+              className="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth="2"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+              />
+            </svg>
+          )}
+        </button>
       </div>
 
       {/* Mobile Drawer Overlay + Smooth Slide Panel */}
       <div
-        className={`fixed inset-x-0 top-[65px] bottom-0 z-40 bg-dark/40 backdrop-blur-xs transition-opacity duration-300 lg:hidden ${
+        className={`fixed inset-x-0 top-[61px] bottom-0 z-40 bg-dark/40 backdrop-blur-xs transition-opacity duration-300 lg:hidden ${
           isOpen
             ? "opacity-100 pointer-events-auto"
             : "opacity-0 pointer-events-none"

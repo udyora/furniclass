@@ -116,7 +116,7 @@ export default function ShopPage() {
 
   return (
     <main className="min-h-screen font-quicksand bg-white">
-      <PageBanner title="Shop" breadcrumb="Shop" />
+      <PageBanner />
 
       <section className="py-12 sm:py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

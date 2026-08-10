@@ -1,199 +1,232 @@
 "use client";
 
-import React from "react";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import * as z from "zod";
-
-const enquirySchema = z.object({
-  fullName: z.string().min(2, "Full name must be at least 2 characters"),
-  email: z.string().email("Please enter a valid email address"),
-  phone: z
-    .string()
-    .min(10, "Phone number must be at least 10 digits")
-    .regex(/^[0-9+\s-]+$/, "Invalid phone number format"),
-  location: z.string().min(2, "Delivery location is required"),
-  notes: z.string().optional(),
-});
-
-type EnquiryFormData = z.infer<typeof enquirySchema>;
+import React, { useState } from "react";
+import { CustomToast } from "@/components/common/toast";
+import { Loader2, Upload } from "lucide-react";
 
 interface EnquireModalProps {
   isOpen: boolean;
   onClose: () => void;
-  productName: string;
-  selectedSize: string;
-  selectedColor: string;
-  quantity: number;
+  productName?: string;
 }
 
 export default function EnquireModal({
   isOpen,
   onClose,
-  productName,
-  selectedSize,
-  selectedColor,
-  quantity,
+  productName = "Custom Furniture Item",
 }: EnquireModalProps) {
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors, isSubmitting },
-  } = useForm<EnquiryFormData>({
-    resolver: zodResolver(enquirySchema),
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    quantity: 1,
+    location: "",
+    details: "",
+    referenceImage: null as File | null,
   });
+
+  const [loading, setLoading] = useState(false);
+  const [toast, setToast] = useState<{
+    message: string;
+    type: "success" | "error";
+  } | null>(null);
 
   if (!isOpen) return null;
 
-  const onSubmit = (data: EnquiryFormData) => {
-    console.log("Enquiry Submitted:", {
-      ...data,
-      productName,
-      selectedSize,
-      selectedColor,
-      quantity,
-    });
-    alert(
-      "Enquiry submitted successfully! Check your account for status updates.",
-    );
-    reset();
-    onClose();
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+
+    try {
+      const payload = new FormData();
+      payload.append("name", formData.name);
+      payload.append("email", formData.email);
+      payload.append("phone", formData.phone);
+      payload.append("productName", productName);
+      payload.append("quantity", String(formData.quantity));
+      payload.append("location", formData.location);
+      payload.append("details", formData.details);
+
+      if (formData.referenceImage) {
+        payload.append("referenceImage", formData.referenceImage);
+      }
+
+      const res = await fetch("/api/enquiries", {
+        method: "POST",
+        body: payload,
+      });
+
+      if (!res.ok) throw new Error("Failed to submit enquiry.");
+
+      setToast({ message: "Enquiry submitted successfully!", type: "success" });
+      setTimeout(() => onClose(), 1200);
+    } catch (err: any) {
+      setToast({
+        message: err.message || "Something went wrong.",
+        type: "error",
+      });
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-dark/60 backdrop-blur-xs p-4 font-quicksand">
-      <div className="relative w-full max-w-xl bg-bg-main rounded-xs border border-border-light p-8 sm:p-10 shadow-xl">
-        {/* Close Button */}
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4 backdrop-blur-xs font-quicksand">
+      <div className="relative w-full max-w-2xl rounded-xl bg-white p-6 sm:p-8 shadow-2xl border border-gray-100 max-h-[90vh] overflow-y-auto">
         <button
-          type="button"
           onClick={onClose}
-          className="absolute top-6 right-6 text-muted hover:text-dark transition-colors cursor-pointer"
-          aria-label="Close modal"
+          className="absolute right-4 top-4 text-gray-400 hover:text-dark text-lg font-bold"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            className="h-6 w-6"
-          >
-            <path d="M18 6 6 18M6 6l12 12" />
-          </svg>
+          ✕
         </button>
 
-        {/* Modal Header */}
-        <div>
-          <h2 className="text-3xl font-bold text-dark">
-            Quick Furniture Enquiry
-          </h2>
-          <p className="mt-2 text-base text-muted-light">
-            Product:{" "}
-            <span className="font-semibold text-primary">{productName}</span> (
-            {selectedSize} / {quantity} Qty)
-          </p>
-        </div>
+        <h2 className="text-2xl font-bold text-dark mb-1">
+          Enquire for {productName}
+        </h2>
+        <p className="text-xs text-muted mb-6">
+          Submit your requirements and our custom build team will contact you
+          shortly.
+        </p>
 
-        {/* Form */}
-        <form onSubmit={handleSubmit(onSubmit)} className="mt-8 space-y-6">
-          {/* Full Name */}
-          <div>
-            <label className="block text-base font-bold text-dark mb-2">
-              Full Name *
-            </label>
-            <input
-              type="text"
-              {...register("fullName")}
-              placeholder="e.g. Abhishek Sharma"
-              className="w-full bg-bg-main border border-border-light rounded-xs px-4 py-3.5 text-base text-dark focus:outline-none focus:border-primary transition-colors"
-            />
-            {errors.fullName && (
-              <p className="mt-1.5 text-base text-pink font-medium">
-                {errors.fullName.message}
-              </p>
-            )}
-          </div>
-
-          {/* Email & Phone Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div>
-              <label className="block text-base font-bold text-dark mb-2">
+              <label className="block text-xs font-bold text-dark mb-1">
+                Your Name *
+              </label>
+              <input
+                required
+                type="text"
+                value={formData.name}
+                onChange={(e) =>
+                  setFormData({ ...formData, name: e.target.value })
+                }
+                className="w-full rounded-md border border-gray-200 px-3 py-2 text-sm text-dark focus:outline-none focus:border-primary"
+              />
+            </div>
+            <div>
+              <label className="block text-xs font-bold text-dark mb-1">
                 Email Address *
               </label>
               <input
+                required
                 type="email"
-                {...register("email")}
-                placeholder="itsabhishek@gmail.com"
-                className="w-full bg-bg-main border border-border-light rounded-xs px-4 py-3.5 text-base text-dark focus:outline-none focus:border-primary transition-colors"
+                value={formData.email}
+                onChange={(e) =>
+                  setFormData({ ...formData, email: e.target.value })
+                }
+                className="w-full rounded-md border border-gray-200 px-3 py-2 text-sm text-dark focus:outline-none focus:border-primary"
               />
-              {errors.email && (
-                <p className="mt-1.5 text-base text-pink font-medium">
-                  {errors.email.message}
-                </p>
-              )}
             </div>
-
             <div>
-              <label className="block text-base font-bold text-dark mb-2">
+              <label className="block text-xs font-bold text-dark mb-1">
                 Phone Number *
               </label>
               <input
+                required
                 type="tel"
-                {...register("phone")}
-                placeholder="+91-6377611XXX"
-                className="w-full bg-bg-main border border-border-light rounded-xs px-4 py-3.5 text-base text-dark focus:outline-none focus:border-primary transition-colors"
+                value={formData.phone}
+                onChange={(e) =>
+                  setFormData({ ...formData, phone: e.target.value })
+                }
+                className="w-full rounded-md border border-gray-200 px-3 py-2 text-sm text-dark focus:outline-none focus:border-primary"
               />
-              {errors.phone && (
-                <p className="mt-1.5 text-base text-pink font-medium">
-                  {errors.phone.message}
-                </p>
-              )}
             </div>
           </div>
 
-          {/* Location */}
-          <div>
-            <label className="block text-base font-bold text-dark mb-2">
-              Delivery City / Location *
-            </label>
-            <input
-              type="text"
-              {...register("location")}
-              placeholder="e.g. Mansarovar, Jaipur"
-              className="w-full bg-bg-main border border-border-light rounded-xs px-4 py-3.5 text-base text-dark focus:outline-none focus:border-primary transition-colors"
-            />
-            {errors.location && (
-              <p className="mt-1.5 text-base text-pink font-medium">
-                {errors.location.message}
-              </p>
-            )}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label className="block text-xs font-bold text-dark mb-1">
+                Quantity
+              </label>
+              <input
+                type="number"
+                min="1"
+                value={formData.quantity}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    quantity: parseInt(e.target.value) || 1,
+                  })
+                }
+                className="w-full rounded-md border border-gray-200 px-3 py-2 text-sm text-dark focus:outline-none focus:border-primary"
+              />
+            </div>
+            <div>
+              <label className="block text-xs font-bold text-dark mb-1">
+                Delivery Location / City *
+              </label>
+              <input
+                required
+                type="text"
+                value={formData.location}
+                onChange={(e) =>
+                  setFormData({ ...formData, location: e.target.value })
+                }
+                className="w-full rounded-md border border-gray-200 px-3 py-2 text-sm text-dark focus:outline-none focus:border-primary"
+              />
+            </div>
           </div>
 
-          {/* Notes */}
           <div>
-            <label className="block text-base font-bold text-dark mb-2">
-              Additional Requirements / Notes
+            <label className="block text-xs font-bold text-dark mb-1">
+              Attach Reference / Design Image (Optional)
+            </label>
+            <div className="flex items-center gap-2 border border-dashed border-gray-300 p-3 rounded-md bg-gray-50">
+              <Upload className="w-4 h-4 text-primary shrink-0" />
+              <input
+                type="file"
+                accept="image/*"
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    referenceImage: e.target.files ? e.target.files[0] : null,
+                  })
+                }
+                className="text-xs text-gray-600 file:mr-3 file:py-1 file:px-3 file:rounded-md file:border-0 file:bg-primary file:text-white file:font-semibold"
+              />
+            </div>
+          </div>
+
+          <div>
+            <label className="block text-xs font-bold text-dark mb-1">
+              Order Details & Custom Specifications
             </label>
             <textarea
               rows={3}
-              {...register("notes")}
-              placeholder="Mention custom size, wood finish, or delivery timeline..."
-              className="w-full bg-bg-main border border-border-light rounded-xs px-4 py-3.5 text-base text-dark focus:outline-none focus:border-primary resize-none transition-colors"
+              placeholder="Dimensions, wood type, fabric finish, or specific customization..."
+              value={formData.details}
+              onChange={(e) =>
+                setFormData({ ...formData, details: e.target.value })
+              }
+              className="w-full rounded-md border border-gray-200 px-3 py-2 text-sm text-dark focus:outline-none focus:border-primary resize-none"
             />
           </div>
 
-          {/* Submit */}
-          <div className="pt-2">
+          <div className="pt-2 flex justify-center">
             <button
               type="submit"
-              disabled={isSubmitting}
-              className="w-full bg-primary hover:bg-primary-hover text-white font-bold text-lg py-4 rounded-xs transition-colors cursor-pointer shadow-xs disabled:opacity-50"
+              disabled={loading}
+              className="bg-primary hover:bg-primary-hover text-white px-10 py-2.5 rounded-md font-bold text-sm transition-colors cursor-pointer flex items-center justify-center gap-2 disabled:opacity-50"
             >
-              {isSubmitting ? "Submitting..." : "Submit Enquiry"}
+              {loading ? (
+                <>
+                  <Loader2 className="w-4 h-4 animate-spin" /> Submitting...
+                </>
+              ) : (
+                "Submit"
+              )}
             </button>
           </div>
         </form>
+
+        {toast && (
+          <CustomToast
+            message={toast.message}
+            type={toast.type}
+            onClose={() => setToast(null)}
+          />
+        )}
       </div>
     </div>
   );

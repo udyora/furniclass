@@ -22,7 +22,9 @@ export default function SectionHeading({
   };
 
   return (
-    <div className={`max-w-2xl mb-6 ${alignClasses[align]} ${className}`}>
+    <div
+      className={`max-w-2xl px-4 sm:px-6 lg:px-8 mb-6 ${alignClasses[align]} ${className}`}
+    >
       {/* Heading with fixed mb-6 bottom margin */}
       <h2
         id={id}

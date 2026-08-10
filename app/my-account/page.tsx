@@ -48,7 +48,7 @@ export default function MyAccountPage() {
 
   return (
     <main className="min-h-screen font-quicksand bg-bg-main pb-24">
-      <PageBanner title="My Account" breadcrumb="My Account" />
+      <PageBanner />
 
       <section className="py-16 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

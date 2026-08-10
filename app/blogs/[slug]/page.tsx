@@ -98,7 +98,7 @@ export default function BlogDetailPage({ params }: BlogDetailPageProps) {
   return (
     <main className="min-h-screen font-quicksand bg-bg-main pb-20">
       {/* Top Banner with exact title: The Charm of Minimalist Interiors */}
-      <PageBanner title={post.title} breadcrumb={post.title} />
+      <PageBanner />
 
       <section className="py-12 sm:py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

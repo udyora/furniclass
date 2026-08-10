@@ -154,7 +154,6 @@ export default function ProductInfo({
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         productName={name}
-        selectedSize={selectedSize}
         selectedColor={selectedColor}
         quantity={quantity}
       />
