@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import MainContactForm from "./contact/main-contact-form";
 import { X } from "lucide-react";
+import SectionHeading from "./common/section-heading";
 
 const fixedImage = {
   src: "/furniclass-logo.png",
@@ -105,7 +106,7 @@ export default function Hero() {
               </div>
             </div>
           </div>
-
+          <SectionHeading className="pt-12" title="Form" />
           {/* 3. Contact Form */}
           <div id="form-section" className="w-full">
             <MainContactForm />

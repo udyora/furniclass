@@ -113,7 +113,7 @@ export default function MainContactForm() {
             htmlFor="phone"
             className="block text-sm font-bold text-dark mb-1.5"
           >
-            Phone Number *
+            Whatshapp Number *
           </label>
           <input
             id="phone"

@@ -8,18 +8,22 @@ interface EnquireModalProps {
   isOpen: boolean;
   onClose: () => void;
   productName?: string;
+  selectedColor?: string;
+  quantity?: number;
 }
 
 export default function EnquireModal({
   isOpen,
   onClose,
   productName = "Custom Furniture Item",
+  selectedColor = "",
+  quantity = 1,
 }: EnquireModalProps) {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
-    quantity: 1,
+    quantity,
     location: "",
     details: "",
     referenceImage: null as File | null,
@@ -44,6 +48,7 @@ export default function EnquireModal({
       payload.append("phone", formData.phone);
       payload.append("productName", productName);
       payload.append("quantity", String(formData.quantity));
+      payload.append("selectedColor", selectedColor);
       payload.append("location", formData.location);
       payload.append("details", formData.details);
 
@@ -120,7 +125,7 @@ export default function EnquireModal({
             </div>
             <div>
               <label className="block text-xs font-bold text-dark mb-1">
-                Phone Number *
+                Whatshapp Number *
               </label>
               <input
                 required

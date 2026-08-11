@@ -14,11 +14,7 @@ export default function AboutUsPage() {
   return (
     <main>
       <PageBanner />
-      <SectionHeading
-        className="pt-12"
-        title="About Us"
-        subtitle="At FurniClass, we believe your home deserves furniture that combines style, comfort, and quality."
-      />
+      <SectionHeading className="pt-12" title="About Us" />
       <AboutHero />
     </main>
   );

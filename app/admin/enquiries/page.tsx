@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { client } from "@/sanity/lib/client";
 import { TableRowSkeleton } from "@/components/common/skeleton";
@@ -244,10 +244,9 @@ export default function EnquiriesPage() {
                     Reference Image:
                   </span>
                   <div className="relative h-48 w-full rounded-md overflow-hidden border border-border-light bg-gray-50">
-                    <Image
+                    <img
                       src={viewDetailEnquiry.imageUrl}
                       alt="Reference Design"
-                      fill
                       className="object-contain"
                     />
                   </div>

@@ -61,11 +61,7 @@ export default function GalleryGrid() {
       {/* Reusable Common Page Banner */}
       <PageBanner />
 
-      <SectionHeading
-        className="pt-12"
-        title="Gallery"
-        subtitle="FurniClass Portfolio Gallery"
-      />
+      <SectionHeading className="pt-12" title="Gallery" />
       {/* Main Gallery Grid Section */}
       <section
         aria-labelledby="gallery-grid-heading"
