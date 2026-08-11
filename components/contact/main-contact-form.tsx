@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
-import { enquiriesService } from "@/services/enquiriesService";
 import { CustomToast } from "@/components/common/toast";
 import { Loader2 } from "lucide-react";
 
@@ -22,7 +21,28 @@ export default function MainContactForm() {
   } | null>(null);
 
   const submitMutation = useMutation({
-    mutationFn: enquiriesService.createEnquiry,
+    mutationFn: async (payload: typeof formData) => {
+      const data = new FormData();
+      data.append("name", payload.name);
+      data.append("email", payload.email);
+      data.append("phone", payload.phone);
+      data.append("productName", "Homepage Studio Custom Form");
+      data.append("quantity", String(payload.quantity));
+      data.append("location", payload.location);
+      data.append("details", payload.details);
+
+      const res = await fetch("/api/enquiries", {
+        method: "POST",
+        body: data, // Form Data format resolves "Content-Type" error
+      });
+
+      if (!res.ok) {
+        const err = await res.json();
+        throw new Error(err.error || "Failed to submit enquiry.");
+      }
+
+      return res.json();
+    },
     onSuccess: () => {
       setToast({
         message: "Thank you! Your custom order enquiry has been received.",
@@ -47,15 +67,7 @@ export default function MainContactForm() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    submitMutation.mutate({
-      name: formData.name,
-      email: formData.email,
-      phone: formData.phone,
-      productName: "Homepage Studio Custom Form",
-      quantity: Number(formData.quantity) || 1,
-      location: formData.location,
-      details: formData.details,
-    });
+    submitMutation.mutate(formData);
   };
 
   return (
@@ -63,17 +75,12 @@ export default function MainContactForm() {
       onSubmit={handleSubmit}
       className="bg-bg-card p-6 sm:p-10 border border-border-light font-quicksand space-y-6 rounded-none"
     >
-      {/* Row 1: Name & Email */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
         <div>
-          <label
-            htmlFor="name"
-            className="block text-sm font-bold text-dark mb-1.5"
-          >
+          <label className="block text-sm font-bold text-dark mb-1.5">
             Your Name *
           </label>
           <input
-            id="name"
             type="text"
             required
             placeholder="Enter your full name"
@@ -81,19 +88,15 @@ export default function MainContactForm() {
             onChange={(e) =>
               setFormData((prev) => ({ ...prev, name: e.target.value }))
             }
-            className="w-full bg-white border border-border-light rounded-sm px-4 py-3 text-sm text-dark focus:outline-none focus:border-primary transition-colors"
+            className="w-full bg-white border border-border-light rounded-sm px-4 py-3 text-sm text-dark focus:outline-none focus:border-primary"
           />
         </div>
 
         <div>
-          <label
-            htmlFor="email"
-            className="block text-sm font-bold text-dark mb-1.5"
-          >
+          <label className="block text-sm font-bold text-dark mb-1.5">
             Email Address *
           </label>
           <input
-            id="email"
             type="email"
             required
             placeholder="Enter your email address"
@@ -101,22 +104,17 @@ export default function MainContactForm() {
             onChange={(e) =>
               setFormData((prev) => ({ ...prev, email: e.target.value }))
             }
-            className="w-full bg-white border border-border-light rounded-sm px-4 py-3 text-sm text-dark focus:outline-none focus:border-primary transition-colors"
+            className="w-full bg-white border border-border-light rounded-sm px-4 py-3 text-sm text-dark focus:outline-none focus:border-primary"
           />
         </div>
       </div>
 
-      {/* Row 2: Phone & Quantity */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
         <div>
-          <label
-            htmlFor="phone"
-            className="block text-sm font-bold text-dark mb-1.5"
-          >
-            Whatshapp Number *
+          <label className="block text-sm font-bold text-dark mb-1.5">
+            Whatsapp Number *
           </label>
           <input
-            id="phone"
             type="tel"
             required
             placeholder="Enter your phone number"
@@ -124,19 +122,15 @@ export default function MainContactForm() {
             onChange={(e) =>
               setFormData((prev) => ({ ...prev, phone: e.target.value }))
             }
-            className="w-full bg-white border border-border-light rounded-sm px-4 py-3 text-sm text-dark focus:outline-none focus:border-primary transition-colors"
+            className="w-full bg-white border border-border-light rounded-sm px-4 py-3 text-sm text-dark focus:outline-none focus:border-primary"
           />
         </div>
 
         <div>
-          <label
-            htmlFor="quantity"
-            className="block text-sm font-bold text-dark mb-1.5"
-          >
+          <label className="block text-sm font-bold text-dark mb-1.5">
             Quantity
           </label>
           <input
-            id="quantity"
             type="number"
             min={1}
             value={formData.quantity}
@@ -146,21 +140,16 @@ export default function MainContactForm() {
                 quantity: parseInt(e.target.value) || 1,
               }))
             }
-            className="w-full bg-white border border-border-light rounded-sm px-4 py-3 text-sm text-dark focus:outline-none focus:border-primary transition-colors"
+            className="w-full bg-white border border-border-light rounded-sm px-4 py-3 text-sm text-dark focus:outline-none focus:border-primary"
           />
         </div>
       </div>
 
-      {/* Row 3: Location */}
       <div>
-        <label
-          htmlFor="location"
-          className="block text-sm font-bold text-dark mb-1.5"
-        >
+        <label className="block text-sm font-bold text-dark mb-1.5">
           Delivery Location / City *
         </label>
         <input
-          id="location"
           type="text"
           required
           placeholder="Enter your location"
@@ -168,31 +157,25 @@ export default function MainContactForm() {
           onChange={(e) =>
             setFormData((prev) => ({ ...prev, location: e.target.value }))
           }
-          className="w-full bg-white border border-border-light rounded-sm px-4 py-3 text-sm text-dark focus:outline-none focus:border-primary transition-colors"
+          className="w-full bg-white border border-border-light rounded-sm px-4 py-3 text-sm text-dark focus:outline-none focus:border-primary"
         />
       </div>
 
-      {/* Row 4: Specifications */}
       <div>
-        <label
-          htmlFor="details"
-          className="block text-sm font-bold text-dark mb-1.5"
-        >
+        <label className="block text-sm font-bold text-dark mb-1.5">
           Order Details &amp; Custom Specifications
         </label>
         <textarea
-          id="details"
           rows={4}
           placeholder="Mention dimensions, material, or specific customization..."
           value={formData.details}
           onChange={(e) =>
             setFormData((prev) => ({ ...prev, details: e.target.value }))
           }
-          className="w-full bg-white border border-border-light rounded-sm px-4 py-3 text-sm text-dark focus:outline-none focus:border-primary transition-colors resize-none"
+          className="w-full bg-white border border-border-light rounded-sm px-4 py-3 text-sm text-dark focus:outline-none focus:border-primary resize-none"
         />
       </div>
 
-      {/* Submit Button */}
       <div className="flex justify-center pt-2">
         <button
           type="submit"

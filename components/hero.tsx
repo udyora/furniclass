@@ -106,7 +106,7 @@ export default function Hero() {
               </div>
             </div>
           </div>
-          <SectionHeading className="pt-12" title="Form" />
+          <SectionHeading className="pt-12" title="Custom Furniture Enquiry" />
           {/* 3. Contact Form */}
           <div id="form-section" className="w-full">
             <MainContactForm />
