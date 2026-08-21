@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { CustomToast } from "@/components/common/toast";
-import { Loader2, Upload } from "lucide-react";
+import { Loader2 } from "lucide-react";
 
 interface EnquireModalProps {
   isOpen: boolean;
@@ -26,7 +26,6 @@ export default function EnquireModal({
     quantity,
     location: "",
     details: "",
-    referenceImage: null as File | null,
   });
 
   const [loading, setLoading] = useState(false);
@@ -52,10 +51,6 @@ export default function EnquireModal({
       payload.append("location", formData.location);
       payload.append("details", formData.details);
 
-      if (formData.referenceImage) {
-        payload.append("referenceImage", formData.referenceImage);
-      }
-
       const res = await fetch("/api/enquiries", {
         method: "POST",
         body: payload,
@@ -77,7 +72,7 @@ export default function EnquireModal({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4 backdrop-blur-xs font-quicksand">
-      <div className="relative w-full max-w-2xl rounded-xl bg-white p-6 sm:p-8 shadow-2xl border border-gray-100 max-h-[90vh] overflow-y-auto">
+      <div className="relative w-full max-w-xl rounded-xl bg-white p-6 sm:p-8 shadow-2xl border border-gray-100 max-h-[90vh] overflow-y-auto">
         <button
           onClick={onClose}
           className="absolute right-4 top-4 text-gray-400 hover:text-dark text-lg font-bold"
@@ -89,26 +84,28 @@ export default function EnquireModal({
           Enquire for {productName}
         </h2>
         <p className="text-xs text-muted mb-6">
-          Submit your requirements and our custom build team will contact you
+          Submit your contact details and our team will get in touch with you
           shortly.
         </p>
 
         <form onSubmit={handleSubmit} className="space-y-4">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            <div>
-              <label className="block text-xs font-bold text-dark mb-1">
-                Your Name *
-              </label>
-              <input
-                required
-                type="text"
-                value={formData.name}
-                onChange={(e) =>
-                  setFormData({ ...formData, name: e.target.value })
-                }
-                className="w-full rounded-md border border-gray-200 px-3 py-2 text-sm text-dark focus:outline-none focus:border-primary"
-              />
-            </div>
+          <div>
+            <label className="block text-xs font-bold text-dark mb-1">
+              Your Name *
+            </label>
+            <input
+              required
+              type="text"
+              placeholder="Enter your full name"
+              value={formData.name}
+              onChange={(e) =>
+                setFormData({ ...formData, name: e.target.value })
+              }
+              className="w-full rounded-md border border-gray-200 px-3 py-2 text-sm text-dark focus:outline-none focus:border-primary"
+            />
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label className="block text-xs font-bold text-dark mb-1">
                 Email Address *
@@ -116,6 +113,7 @@ export default function EnquireModal({
               <input
                 required
                 type="email"
+                placeholder="Enter your email"
                 value={formData.email}
                 onChange={(e) =>
                   setFormData({ ...formData, email: e.target.value })
@@ -125,11 +123,12 @@ export default function EnquireModal({
             </div>
             <div>
               <label className="block text-xs font-bold text-dark mb-1">
-                Whatshapp Number *
+                Whatsapp Number *
               </label>
               <input
                 required
                 type="tel"
+                placeholder="Enter phone number"
                 value={formData.phone}
                 onChange={(e) =>
                   setFormData({ ...formData, phone: e.target.value })
@@ -164,6 +163,7 @@ export default function EnquireModal({
               <input
                 required
                 type="text"
+                placeholder="e.g. Faridabad, Delhi NCR"
                 value={formData.location}
                 onChange={(e) =>
                   setFormData({ ...formData, location: e.target.value })
@@ -175,31 +175,11 @@ export default function EnquireModal({
 
           <div>
             <label className="block text-xs font-bold text-dark mb-1">
-              Attach Reference / Design Image (Optional)
-            </label>
-            <div className="flex items-center gap-2 border border-dashed border-gray-300 p-3 rounded-md bg-gray-50">
-              <Upload className="w-4 h-4 text-primary shrink-0" />
-              <input
-                type="file"
-                accept="image/*"
-                onChange={(e) =>
-                  setFormData({
-                    ...formData,
-                    referenceImage: e.target.files ? e.target.files[0] : null,
-                  })
-                }
-                className="text-xs text-gray-600 file:mr-3 file:py-1 file:px-3 file:rounded-md file:border-0 file:bg-primary file:text-white file:font-semibold"
-              />
-            </div>
-          </div>
-
-          <div>
-            <label className="block text-xs font-bold text-dark mb-1">
-              Order Details & Custom Specifications
+              Message / Notes (Optional)
             </label>
             <textarea
               rows={3}
-              placeholder="Dimensions, wood type, fabric finish, or specific customization..."
+              placeholder="Any specific note or preferred time to contact..."
               value={formData.details}
               onChange={(e) =>
                 setFormData({ ...formData, details: e.target.value })
@@ -219,7 +199,7 @@ export default function EnquireModal({
                   <Loader2 className="w-4 h-4 animate-spin" /> Submitting...
                 </>
               ) : (
-                "Submit"
+                "Submit Enquiry"
               )}
             </button>
           </div>

@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import PageBanner from "@/components/common/page-banner";
 import ContactInfo from "@/components/contact/contact-info";
 import ContactForm from "@/components/contact/contact-form";
+import MainContactForm from "@/components/contact/main-contact-form";
 
 export const metadata: Metadata = {
   title: "Contact Us & Custom Orders | FurniClass",
@@ -34,7 +35,7 @@ export default function ContactPage() {
               <ContactInfo />
             </div>
             <div className="lg:col-span-7">
-              <ContactForm />
+              <MainContactForm />
             </div>
           </div>
         </div>

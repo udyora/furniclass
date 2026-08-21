@@ -20,47 +20,50 @@ interface ShopProduct {
 const products: ShopProduct[] = [
   {
     id: "1",
-    slug: "lolito",
-    name: "Lolito",
+    slug: "natural-oak-frame-sofa",
+    name: "Natural Oak Frame Sofa",
     category: "Sofas",
-    tags: ["Furniture", "Chairs"],
-    description: "A premium oversized sofa designed",
+    tags: ["Furniture", "Sofas", "Living Room"],
+    description:
+      "A timeless upholstered sofa featuring a natural oak frame and soft comfortable seating.",
     price: "Rp 7.000.000",
     originalPrice: "Rp 14.000.000",
-    image:
-      "https://framerusercontent.com/images/HMqkXwNuVYOTAjKNrQvWJ6ZFIg.webp",
+    image: "/natural-oak-frame-soffa.webp",
   },
   {
     id: "2",
-    slug: "respira",
-    name: "Respira",
+    slug: "dark-walnut-bent-leg-table",
+    name: "Dark Walnut Bent-Leg Table",
     category: "Tables",
-    tags: ["Furniture", "Dining - Table"],
-    description: "A durable and stylish outdoor bar",
-    price: "Rp 500.000",
-    image: "https://framerusercontent.com/images/0Kfs9A2Cvwm44Nc7dTXsN9Y.jpg",
+    tags: ["Furniture", "Tables", "Living Room"],
+    description:
+      "A sophisticated round walnut table featuring sculpted bent wooden legs and a classic mid-century design.",
+    price: "Rp 3.250.000",
+    originalPrice: "Rp 4.500.000",
+    image: "/bent-leg-table.webp",
   },
   {
     id: "3",
-    slug: "lumo-modern-led",
-    name: "Lumo – Modern LED",
+    slug: "opal-globe-brass-lamp",
+    name: "Opal Globe Brass Table Lamp",
     category: "Accessories",
-    tags: ["Furniture", "Dressing - Table"],
-    description: "A sleek and stylish night lamp",
-    price: "Rp 1.500.000",
-    image:
-      "https://framerusercontent.com/images/vWOtRRHqHqC3nccZYSpVnQX30E0.webp",
+    tags: ["Furniture", "Accessories", "Lighting"],
+    description:
+      "An elegant globe table lamp combining a soft opal sphere with a warm brass-toned base.",
+    price: "Rp 850.000",
+    image: "/opal-globe-brass.webp",
   },
   {
     id: "4",
-    slug: "muggo",
-    name: "muggo",
+    slug: "nordic-oak-lounge-chair",
+    name: "Nordic Oak Lounge Chair",
     category: "Chairs",
-    tags: ["Furniture", "Wooden - Wardrobe", "Chairs"],
-    description: "A luxurious red velvet sofa that",
-    price: "Rp 150.000",
-    image:
-      "https://framerusercontent.com/images/16l97Qq9LwD45bmJYfNnC7HCtLM.webp",
+    tags: ["Furniture", "Chairs", "Lounge"],
+    description:
+      "A beautifully crafted natural oak lounge chair with a timeless Scandinavian-inspired design.",
+    price: "Rp 1.850.000",
+    originalPrice: "Rp 2.400.000",
+    image: "/nordic-oak-lounge.webp",
   },
 ];
 
@@ -69,8 +72,6 @@ export default function ShopPage() {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
   const [wishlist, setWishlist] = useState<string[]>([]);
-
-  // Strictly these 4 categories matching the screenshot
   const categories = ["Chairs", "Sofas", "Tables", "Accessories"];
 
   const popularTags = [
@@ -101,7 +102,7 @@ export default function ShopPage() {
   }, [searchQuery, selectedCategory, selectedTag]);
 
   const toggleWishlist = (e: React.MouseEvent, id: string) => {
-    e.preventDefault(); // Stop Link navigation when clicking wishlist
+    e.preventDefault();
     e.stopPropagation();
     setWishlist((prev) =>
       prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id],
@@ -121,9 +122,7 @@ export default function ShopPage() {
       <section className="py-12 sm:py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
-            {/* Sidebar */}
             <aside className="lg:col-span-3 space-y-6">
-              {/* Search Box */}
               <div className="relative bg-white p-3 rounded-xs border border-gray-200">
                 <input
                   type="text"
@@ -248,7 +247,7 @@ export default function ShopPage() {
                     return (
                       <Link
                         key={product.id}
-                        href={`/shop/${product.slug}`}
+                        href={`/categories/${product.category.toLowerCase()}/${product.slug}`}
                         className="group bg-[#f4f5f7] overflow-hidden rounded-xs transition-all hover:shadow-md block relative cursor-pointer"
                       >
                         {/* Image Container */}
@@ -260,8 +259,6 @@ export default function ShopPage() {
                             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                             className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
                           />
-
-                          {/* Wishlist Circle Heart Badge */}
                           <button
                             type="button"
                             onClick={(e) => toggleWishlist(e, product.id)}
@@ -290,13 +287,11 @@ export default function ShopPage() {
                           <h3 className="text-xl font-bold text-gray-800 group-hover:text-teal-600 transition-colors">
                             {product.name}
                           </h3>
-
                           <p className="mt-1 text-xs text-gray-500 line-clamp-1">
                             {product.description}
                           </p>
-
                           {/* Price Row */}
-                          <div className="mt-3 flex items-center gap-3">
+                          {/* <div className="mt-3 flex items-center gap-3">
                             <span className="text-sm font-bold text-gray-900">
                               {product.price}
                             </span>
@@ -305,7 +300,7 @@ export default function ShopPage() {
                                 {product.originalPrice}
                               </span>
                             )}
-                          </div>
+                          </div> */}
                         </div>
                       </Link>
                     );

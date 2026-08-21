@@ -9,6 +9,7 @@ export async function POST(req: Request) {
     const email = formData.get("email") as string;
     const phone = formData.get("phone") as string;
     const productName = formData.get("productName") as string;
+    const selectedColor = formData.get("selectedColor") as string;
     const quantity = Number(formData.get("quantity")) || 1;
     const location = formData.get("location") as string;
     const details = formData.get("details") as string;
@@ -17,7 +18,7 @@ export async function POST(req: Request) {
     let imageAssetRef = null;
 
     // 1. Upload reference image asset to Sanity if attached
-    if (imageFile && imageFile.size > 0) {
+    if (imageFile && typeof imageFile === "object" && imageFile.size > 0) {
       const buffer = Buffer.from(await imageFile.arrayBuffer());
       const asset = await client.assets.upload("image", buffer, {
         filename: imageFile.name,
@@ -39,6 +40,7 @@ export async function POST(req: Request) {
       email,
       phone,
       productName: productName || "General Custom Furniture Order",
+      selectedColor: selectedColor || "",
       quantity,
       location,
       details: details || "",

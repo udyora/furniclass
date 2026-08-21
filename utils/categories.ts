@@ -1,5 +1,6 @@
 export interface CategoryProduct {
   id: string;
+  slug: string;
   name: string;
   categorySlug: string;
   description: string;
@@ -9,246 +10,268 @@ export interface CategoryProduct {
 }
 
 export const categoryProducts: CategoryProduct[] = [
-  // ================= CHAIRS (6 Items) =================
+  // =========================
+  // CHAIRS
+  // =========================
   {
     id: "c1",
-    name: "Muggo Wooden Chair",
+    slug: "nordic-oak-lounge-chair",
+    name: "Nordic Oak Lounge Chair",
     categorySlug: "chairs",
-    description: "Ergonomic dining & accent chair crafted from solid oak wood.",
-    price: "Rp 150.000",
-    image:
-      "https://framerusercontent.com/images/16l97Qq9LwD45bmJYfNnC7HCtLM.webp",
+    description:
+      "A beautifully crafted natural oak lounge chair with a timeless Scandinavian-inspired design.",
+    price: "Rp 1.850.000",
+    originalPrice: "Rp 2.400.000",
+    image: "/nordic-oak-lounge.webp",
   },
   {
     id: "c2",
-    name: "Minimalist Lounge Chair",
+    slug: "curved-oak-scandinavian-chair",
+    name: "Curved Oak Scandinavian Chair",
     categorySlug: "chairs",
     description:
-      "Sculpted velvet armchair built for premium executive lounge comfort.",
-    price: "Rp 1.200.000",
-    originalPrice: "Rp 1.800.000",
-    image:
-      "https://framerusercontent.com/images/omu7WWKCCJyngcInEeptxK9YXw.webp",
+      "Elegant curved-back wooden chair designed for comfortable dining and modern interiors.",
+    price: "Rp 1.650.000",
+    image: "/curved-back-lounge.webp",
   },
   {
     id: "c3",
-    name: "Nordic Dining Chair Set",
+    slug: "mid-century-dining-chair",
+    name: "Mid-Century Dining Chair",
     categorySlug: "chairs",
     description:
-      "Sleek wooden frame with cushioned seating for contemporary dining rooms.",
-    price: "Rp 850.000",
-    image:
-      "https://framerusercontent.com/images/M5UOPtlamIUkwnieQ3yYAxPFskc.webp",
+      "A refined mid-century dining chair featuring a dark green upholstered seat and minimalist frame.",
+    price: "Rp 1.450.000",
+    originalPrice: "Rp 1.900.000",
+    image: "/mid-century-dining-chair.webp",
   },
   {
     id: "c4",
-    name: "Aura Velvet Armchair",
+    slug: "modern-lounge-armchair",
+    name: "Modern Lounge Armchair",
     categorySlug: "chairs",
     description:
-      "Plush velvet back support with polished gold-toned metallic legs.",
-    price: "Rp 2.100.000",
-    originalPrice: "Rp 2.800.000",
-    image:
-      "https://framerusercontent.com/images/qzRnfwWaiU5GfrtihylFXPP6vc.webp",
+      "Soft upholstered lounge armchair with a comfortable silhouette for living rooms and reading corners.",
+    price: "Rp 2.200.000",
+    originalPrice: "Rp 2.900.000",
+    image: "/lounge-armchair.webp",
   },
   {
     id: "c5",
-    name: "Elegance Executive Desk Chair",
+    slug: "natural-oak-counter-bar",
+    name: "Natural Oak Counter Bar",
     categorySlug: "chairs",
     description:
-      "Premium leather executive seating with ergonomic lumbar contouring.",
-    price: "Rp 3.400.000",
-    image:
-      "https://framerusercontent.com/images/HMqkXwNuVYOTAjKNrQvWJ6ZFIg.webp",
+      "Minimal natural oak counter-height bar chair designed for kitchens, counters and casual dining spaces.",
+    price: "Rp 1.350.000",
+    image: "/natural-oak-counter-bar.webp",
   },
   {
     id: "c6",
-    name: "Urban Rattan Accent Chair",
+    slug: "cognac-leather-mid-century-chair",
+    name: "Cognac Leather Mid-Century Chair",
     categorySlug: "chairs",
     description:
-      "Handcrafted natural rattan weave design for modern balcony corners.",
-    price: "Rp 950.000",
-    image:
-      "https://framerusercontent.com/images/E1SeXrbQeB7bVC1LQduOpuhLg.webp",
+      "Premium cognac leather lounge chair with a warm wooden frame and classic mid-century character.",
+    price: "Rp 3.250.000",
+    originalPrice: "Rp 4.200.000",
+    image: "/cognac-leather-mid-century.webp",
   },
 
-  // ================= SOFAS (6 Items) =================
+  // =========================
+  // SOFAS
+  // =========================
   {
     id: "s1",
-    name: "Lolito Luxury Big Sofa",
+    slug: "natural-oak-frame-sofa",
+    name: "Natural Oak Frame Sofa",
     categorySlug: "sofas",
     description:
-      "A premium oversized sofa designed for luxurious comfort and modern interiors.",
+      "A timeless upholstered sofa featuring a natural oak frame and soft comfortable seating.",
     price: "Rp 7.000.000",
     originalPrice: "Rp 14.000.000",
-    image:
-      "https://framerusercontent.com/images/HMqkXwNuVYOTAjKNrQvWJ6ZFIg.webp",
+    image: "/natural-oak-frame-soffa.webp",
   },
   {
     id: "s2",
-    name: "Verona Modular Sectional Sofa",
+    slug: "slate-mid-century-sofa",
+    name: "Slate Mid-Century Sofa",
     categorySlug: "sofas",
     description:
-      "L-shaped deep cushion modular sofa perfect for large family living spaces.",
-    price: "Rp 11.500.000",
-    originalPrice: "Rp 15.000.000",
-    image:
-      "https://framerusercontent.com/images/3GB2Pah9N4LedXnHFT9WWE6Gsk.webp",
+      "A stylish mid-century sofa combining warm upholstery with a contemporary two-tone finish.",
+    price: "Rp 6.500.000",
+    originalPrice: "Rp 9.500.000",
+    image: "/slate-mid-century-sofa.webp",
   },
   {
     id: "s3",
-    name: "Chesterfield Velvet 3-Seater",
+    slug: "modern-lounge-sofa",
+    name: "Modern Lounge Sofa",
     categorySlug: "sofas",
     description:
-      "Classic tufted button design upholstered in premium stain-resistant velvet.",
-    price: "Rp 8.900.000",
-    image:
-      "https://framerusercontent.com/images/16l97Qq9LwD45bmJYfNnC7HCtLM.webp",
+      "A soft contemporary sofa with clean lines and generous cushioning for everyday comfort.",
+    price: "Rp 5.800.000",
+    originalPrice: "Rp 8.500.000",
+    image: "/lounge-armchair.webp",
   },
   {
     id: "s4",
-    name: "Nordic Minimalist Couch",
+    slug: "white-haven-sofa",
+    name: "White Haven Sofa",
     categorySlug: "sofas",
     description:
-      "Clean aesthetic 2-seater couch with neutral tones and solid beechwood base.",
-    price: "Rp 4.800.000",
-    originalPrice: "Rp 6.200.000",
-    image:
-      "https://framerusercontent.com/images/M5UOPtlamIUkwnieQ3yYAxPFskc.webp",
+      "A refined white upholstered sofa with a warm wooden frame for elegant modern interiors.",
+    price: "Rp 6.000.000",
+    originalPrice: "Rp 8.000.000",
+    image: "/white-soffa.webp",
   },
   {
     id: "s5",
-    name: "Plush Modern Recliner Sofa",
+    slug: "cognac-leather-mid-century-sofa",
+    name: "Cognac Leather Mid-Century Sofa",
     categorySlug: "sofas",
     description:
-      "Ultra-comfortable recliner sofa featuring high-density foam cushioning.",
-    price: "Rp 9.200.000",
-    image:
-      "https://framerusercontent.com/images/E1SeXrbQeB7bVC1LQduOpuhLg.webp",
+      "A sophisticated cognac leather sofa inspired by classic mid-century furniture design.",
+    price: "Rp 8.500.000",
+    originalPrice: "Rp 11.500.000",
+    image: "/cognac-leather-mid-century.webp",
   },
   {
     id: "s6",
-    name: "Koto Compact Studio Sofa",
+    slug: "charcoal-box-frame-lounge-sofa",
+    name: "Charcoal Box Frame Lounge Sofa",
     categorySlug: "sofas",
     description:
-      "Space-saving elegant 2-seater sofa designed for apartment lounges.",
-    price: "Rp 3.750.000",
-    image:
-      "https://framerusercontent.com/images/omu7WWKCCJyngcInEeptxK9YXw.webp",
+      "A bold charcoal upholstered sofa with a structured box-frame silhouette and minimalist legs.",
+    price: "Rp 6.900.000",
+    originalPrice: "Rp 9.000.000",
+    image: "/box-frame-lounge-chair.webp",
   },
 
-  // ================= TABLES (6 Items) =================
+  // =========================
+  // TABLES
+  // =========================
   {
     id: "t1",
-    name: "Respira High-Top Bar Table",
+    slug: "walnut-double-pedestal-table",
+    name: "Walnut Double-Pedestal Table",
     categorySlug: "tables",
     description:
-      "Durable and stylish outdoor bar table with matching weather-resistant finish.",
-    price: "Rp 500.000",
-    image: "https://framerusercontent.com/images/0Kfs9A2Cvwm44Nc7dTXsN9Y.jpg",
+      "Elegant rectangular walnut table featuring twin chrome pedestal supports for a clean contemporary look.",
+    price: "Rp 4.800.000",
+    originalPrice: "Rp 6.500.000",
+    image: "/pedestal-coffee-table.webp",
   },
   {
     id: "t2",
-    name: "Granite Top Luxury Dining Table",
+    slug: "walnut-chrome-trestle-table",
+    name: "Walnut Chrome Trestle Table",
     categorySlug: "tables",
     description:
-      "Sintered stone 6-seater dining table with heavy-duty metallic legs.",
-    price: "Rp 8.500.000",
-    originalPrice: "Rp 12.000.000",
-    image:
-      "https://framerusercontent.com/images/omu7WWKCCJyngcInEeptxK9YXw.webp",
+      "Modern walnut table with a slim chrome trestle base, ideal for dining and collaborative spaces.",
+    price: "Rp 4.500.000",
+    originalPrice: "Rp 6.000.000",
+    image: "/trestle-office-table.webp",
   },
   {
     id: "t3",
-    name: "Koto Round Coffee Table",
+    slug: "light-oak-pedestal-table",
+    name: "Light Oak Pedestal Table",
     categorySlug: "tables",
-    description: "Modern minimalist center table crafted from solid teak wood.",
-    price: "Rp 1.450.000",
-    image:
-      "https://framerusercontent.com/images/vWOtRRHqHqC3nccZYSpVnQX30E0.webp",
+    description:
+      "Minimal square-top table crafted with a light oak surface and sleek chrome pedestal base.",
+    price: "Rp 3.900.000",
+    image: "/pedestal-table.webp",
   },
   {
     id: "t4",
-    name: "Aura Minimalist Study Desk",
+    slug: "dark-walnut-bent-leg-table",
+    name: "Dark Walnut Bent Leg Table",
     categorySlug: "tables",
     description:
-      "Sleek work desk with integrated cable management and dual drawers.",
-    price: "Rp 2.300.000",
-    originalPrice: "Rp 3.100.000",
-    image:
-      "https://framerusercontent.com/images/3GB2Pah9N4LedXnHFT9WWE6Gsk.webp",
+      "Round walnut table featuring sculpted bent wooden legs for a sophisticated mid-century aesthetic.",
+    price: "Rp 3.250.000",
+    originalPrice: "Rp 4.500.000",
+    image: "/bent-leg-table.webp",
   },
   {
     id: "t5",
-    name: "Woodland Console Table",
+    slug: "walnut-tulip-pedestal-table",
+    name: "Walnut Tulip Pedestal Table",
     categorySlug: "tables",
     description:
-      "Narrow hallway console table carved from reclaimed walnut wood.",
-    price: "Rp 1.950.000",
-    image:
-      "https://framerusercontent.com/images/K7E1doWuZkqDsb0pEOQ9BFAMKaw.webp",
+      "Elegant round dining table with a sculptural tulip-inspired pedestal base and premium walnut top.",
+    price: "Rp 3.750.000",
+    originalPrice: "Rp 5.000.000",
+    image: "/pedestal-dining-table.webp",
   },
   {
     id: "t6",
-    name: "Nexus Glass Side Table",
+    slug: "white-wire-base-coffee-table",
+    name: "White Wire Base Coffee Table",
     categorySlug: "tables",
     description:
-      "Tempered glass geometric end table ideal for couch side placement.",
-    price: "Rp 890.000",
-    image:
-      "https://framerusercontent.com/images/fqDYm6jymxWJSNIUFSEjk9RKWvs.jpg",
+      "Minimal round coffee table with a clean white top and lightweight geometric wire base.",
+    price: "Rp 2.250.000",
+    originalPrice: "Rp 3.100.000",
+    image: "/wire-base-coffee-table.webp",
   },
 
-  // ================= ACCESSORIES (5 Items) =================
+  // =========================
+  // ACCESSORIES
+  // =========================
   {
     id: "a1",
-    name: "Lumo – Modern LED Night Lamp",
+    slug: "black-bean-bag-lounge",
+    name: "Black Bean Bag Lounge",
     categorySlug: "accessories",
     description:
-      "Sleek and stylish night lamp designed to create a calm, ambient glow.",
-    price: "Rp 1.500.000",
-    image:
-      "https://framerusercontent.com/images/vWOtRRHqHqC3nccZYSpVnQX30E0.webp",
+      "A relaxed oversized bean bag lounge designed for casual seating, gaming rooms and modern spaces.",
+    price: "Rp 950.000",
+    originalPrice: "Rp 1.250.000",
+    image: "/black-bean-bag.webp",
   },
   {
     id: "a2",
-    name: "Aura Wooden Floor Lamp",
+    slug: "nested-round-wood-side-tables",
+    name: "Nested Round Wood Side Tables",
     categorySlug: "accessories",
-    description: "Minimalist tripod floor lamp with warm linen lampshade.",
-    price: "Rp 1.100.000",
-    originalPrice: "Rp 1.500.000",
-    image:
-      "https://framerusercontent.com/images/fqDYm6jymxWJSNIUFSEjk9RKWvs.jpg",
+    description:
+      "A stylish pair of nested round wooden side tables with contemporary metal bases.",
+    price: "Rp 1.450.000",
+    originalPrice: "Rp 1.900.000",
+    image: "/nested-round-wood.webp",
   },
   {
     id: "a3",
-    name: "Nordic Geometric Wall Mirror",
+    slug: "opal-globe-brass-lamp",
+    name: "Opal Globe Brass Table Lamp",
     categorySlug: "accessories",
     description:
-      "Brass accented accent mirror perfect for vanity or foyer walls.",
-    price: "Rp 750.000",
-    image:
-      "https://framerusercontent.com/images/16l97Qq9LwD45bmJYfNnC7HCtLM.webp",
+      "Elegant globe table lamp combining a soft opal sphere with a warm brass-toned base.",
+    price: "Rp 850.000",
+    image: "/opal-globe-brass.webp",
   },
   {
     id: "a4",
-    name: "Artisan Ceramic Flower Vase",
+    slug: "large-indoor-green-plant",
+    name: "Large Indoor Green Plant",
     categorySlug: "accessories",
     description:
-      "Hand-molded matte ceramic vase set for dining and side table decor.",
-    price: "Rp 320.000",
-    image:
-      "https://framerusercontent.com/images/HMqkXwNuVYOTAjKNrQvWJ6ZFIg.webp",
+      "A statement indoor green plant presented in a contemporary decorative planter for modern interiors.",
+    price: "Rp 1.200.000",
+    originalPrice: "Rp 1.600.000",
+    image: "/large-indoor-green-plant.webp",
   },
   {
     id: "a5",
-    name: "Luxury Woven Throw Pillow Set",
+    slug: "modern-cube-bookshelf",
+    name: "Modern Cube Bookshelf",
     categorySlug: "accessories",
     description:
-      "Set of 2 designer cushion covers with textured geometric patterns.",
-    price: "Rp 450.000",
-    originalPrice: "Rp 600.000",
-    image:
-      "https://framerusercontent.com/images/qzRnfwWaiU5GfrtihylFXPP6vc.webp",
+      "A spacious modern cube bookshelf designed to display books, décor, plants and personal collections.",
+    price: "Rp 3.200.000",
+    originalPrice: "Rp 4.200.000",
+    image: "/cube-bookshelf.webp",
   },
 ];

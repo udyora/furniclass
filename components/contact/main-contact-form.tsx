@@ -3,9 +3,17 @@
 import React, { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { CustomToast } from "@/components/common/toast";
-import { Loader2 } from "lucide-react";
+import { Loader2, Upload, X } from "lucide-react";
 
-export default function MainContactForm() {
+interface CustomEnquiryFormProps {
+  sourceName?: string;
+  buttonText?: string;
+}
+
+export default function MainContactForm({
+  sourceName = "Homepage Custom Order Form",
+  buttonText = "Submit Inquiry",
+}: CustomEnquiryFormProps) {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -13,6 +21,7 @@ export default function MainContactForm() {
     quantity: 1,
     location: "",
     details: "",
+    referenceImage: null as File | null,
   });
 
   const [toast, setToast] = useState<{
@@ -26,14 +35,18 @@ export default function MainContactForm() {
       data.append("name", payload.name);
       data.append("email", payload.email);
       data.append("phone", payload.phone);
-      data.append("productName", "Homepage Studio Custom Form");
+      data.append("productName", sourceName);
       data.append("quantity", String(payload.quantity));
       data.append("location", payload.location);
       data.append("details", payload.details);
 
+      if (payload.referenceImage) {
+        data.append("referenceImage", payload.referenceImage);
+      }
+
       const res = await fetch("/api/enquiries", {
         method: "POST",
-        body: data, // Form Data format resolves "Content-Type" error
+        body: data,
       });
 
       if (!res.ok) {
@@ -55,6 +68,7 @@ export default function MainContactForm() {
         quantity: 1,
         location: "",
         details: "",
+        referenceImage: null,
       });
     },
     onError: (error: Error) => {
@@ -73,11 +87,11 @@ export default function MainContactForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="bg-bg-card p-6 sm:p-10 border border-border-light font-quicksand space-y-6 rounded-none"
+      className="bg-bg-card p-6 sm:p-10 border border-border-light font-quicksand space-y-6 rounded-xs"
     >
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
         <div>
-          <label className="block text-sm font-bold text-dark mb-1.5">
+          <label className="block text-sm font-semibold text-dark mb-1.5">
             Your Name *
           </label>
           <input
@@ -88,12 +102,12 @@ export default function MainContactForm() {
             onChange={(e) =>
               setFormData((prev) => ({ ...prev, name: e.target.value }))
             }
-            className="w-full bg-white border border-border-light rounded-sm px-4 py-3 text-sm text-dark focus:outline-none focus:border-primary"
+            className="w-full bg-white border border-border-light rounded-xs px-4 py-3 text-sm text-dark focus:outline-none focus:border-primary transition-colors"
           />
         </div>
 
         <div>
-          <label className="block text-sm font-bold text-dark mb-1.5">
+          <label className="block text-sm font-semibold text-dark mb-1.5">
             Email Address *
           </label>
           <input
@@ -104,14 +118,14 @@ export default function MainContactForm() {
             onChange={(e) =>
               setFormData((prev) => ({ ...prev, email: e.target.value }))
             }
-            className="w-full bg-white border border-border-light rounded-sm px-4 py-3 text-sm text-dark focus:outline-none focus:border-primary"
+            className="w-full bg-white border border-border-light rounded-xs px-4 py-3 text-sm text-dark focus:outline-none focus:border-primary transition-colors"
           />
         </div>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
         <div>
-          <label className="block text-sm font-bold text-dark mb-1.5">
+          <label className="block text-sm font-semibold text-dark mb-1.5">
             Whatsapp Number *
           </label>
           <input
@@ -122,12 +136,12 @@ export default function MainContactForm() {
             onChange={(e) =>
               setFormData((prev) => ({ ...prev, phone: e.target.value }))
             }
-            className="w-full bg-white border border-border-light rounded-sm px-4 py-3 text-sm text-dark focus:outline-none focus:border-primary"
+            className="w-full bg-white border border-border-light rounded-xs px-4 py-3 text-sm text-dark focus:outline-none focus:border-primary transition-colors"
           />
         </div>
 
         <div>
-          <label className="block text-sm font-bold text-dark mb-1.5">
+          <label className="block text-sm font-semibold text-dark mb-1.5">
             Quantity
           </label>
           <input
@@ -140,29 +154,60 @@ export default function MainContactForm() {
                 quantity: parseInt(e.target.value) || 1,
               }))
             }
-            className="w-full bg-white border border-border-light rounded-sm px-4 py-3 text-sm text-dark focus:outline-none focus:border-primary"
+            className="w-full bg-white border border-border-light rounded-xs px-4 py-3 text-sm text-dark focus:outline-none focus:border-primary transition-colors"
           />
         </div>
       </div>
 
       <div>
-        <label className="block text-sm font-bold text-dark mb-1.5">
+        <label className="block text-sm font-semibold text-dark mb-1.5">
+          Attach Reference / Design Image (Optional)
+        </label>
+        <div className="flex items-center gap-3 border border-dashed border-border-light p-3.5 rounded-xs bg-white">
+          <Upload className="w-5 h-5 text-primary shrink-0" />
+          <input
+            type="file"
+            accept="image/*"
+            onChange={(e) =>
+              setFormData((prev) => ({
+                ...prev,
+                referenceImage: e.target.files ? e.target.files[0] : null,
+              }))
+            }
+            className="text-xs text-muted-light file:mr-3 file:py-1.5 file:px-3 file:rounded-xs file:border-0 file:bg-primary file:text-white file:font-semibold file:cursor-pointer"
+          />
+          {formData.referenceImage && (
+            <button
+              type="button"
+              onClick={() =>
+                setFormData((prev) => ({ ...prev, referenceImage: null }))
+              }
+              className="text-xs text-red-500 hover:text-red-700 flex items-center gap-1 font-medium ml-auto"
+            >
+              <X className="w-3.5 h-3.5" /> Remove
+            </button>
+          )}
+        </div>
+      </div>
+
+      <div>
+        <label className="block text-sm font-semibold text-dark mb-1.5">
           Delivery Location / City *
         </label>
         <input
           type="text"
           required
-          placeholder="Enter your location"
+          placeholder="e.g. Faridabad, Delhi NCR"
           value={formData.location}
           onChange={(e) =>
             setFormData((prev) => ({ ...prev, location: e.target.value }))
           }
-          className="w-full bg-white border border-border-light rounded-sm px-4 py-3 text-sm text-dark focus:outline-none focus:border-primary"
+          className="w-full bg-white border border-border-light rounded-xs px-4 py-3 text-sm text-dark focus:outline-none focus:border-primary transition-colors"
         />
       </div>
 
       <div>
-        <label className="block text-sm font-bold text-dark mb-1.5">
+        <label className="block text-sm font-semibold text-dark mb-1.5">
           Order Details &amp; Custom Specifications
         </label>
         <textarea
@@ -172,7 +217,7 @@ export default function MainContactForm() {
           onChange={(e) =>
             setFormData((prev) => ({ ...prev, details: e.target.value }))
           }
-          className="w-full bg-white border border-border-light rounded-sm px-4 py-3 text-sm text-dark focus:outline-none focus:border-primary resize-none"
+          className="w-full bg-white border border-border-light rounded-xs px-4 py-3 text-sm text-dark focus:outline-none focus:border-primary transition-colors resize-none"
         />
       </div>
 
@@ -180,14 +225,14 @@ export default function MainContactForm() {
         <button
           type="submit"
           disabled={submitMutation.isPending}
-          className="bg-primary hover:bg-primary-hover text-white font-bold text-base px-10 py-3 rounded-xs transition-all shadow-xs cursor-pointer flex items-center justify-center gap-2 disabled:opacity-50"
+          className="bg-primary hover:bg-primary-hover text-white font-bold text-sm px-10 py-3.5 rounded-xs transition-colors shadow-xs cursor-pointer flex items-center justify-center gap-2 disabled:opacity-50"
         >
           {submitMutation.isPending ? (
             <>
-              <Loader2 className="w-5 h-5 animate-spin" /> Submitting...
+              <Loader2 className="w-4 h-4 animate-spin" /> Submitting...
             </>
           ) : (
-            "Submit"
+            buttonText
           )}
         </button>
       </div>

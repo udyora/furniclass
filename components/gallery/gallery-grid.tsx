@@ -17,32 +17,32 @@ interface GalleryImage {
 const galleryImages: GalleryImage[] = [
   {
     id: "1",
-    src: "https://framerusercontent.com/images/16l97Qq9LwD45bmJYfNnC7HCtLM.webp",
+    src: "/gallery-one.webp",
     alt: "FurniClass Modern Dining Room Setup",
   },
   {
     id: "2",
-    src: "https://framerusercontent.com/images/M5UOPtlamIUkwnieQ3yYAxPFskc.webp",
+    src: "/gallery-two.webp",
     alt: "FurniClass Minimalist Executive Table Curation",
   },
   {
     id: "3",
-    src: "https://framerusercontent.com/images/HMqkXwNuVYOTAjKNrQvWJ6ZFIg.webp",
+    src: "/chrome-table.webp",
     alt: "FurniClass Bar Stools Lounge Area",
   },
   {
     id: "4",
-    src: "https://framerusercontent.com/images/omu7WWKCCJyngcInEeptxK9YXw.webp",
+    src: "/gallery-four.webp",
     alt: "FurniClass Antique Wooden Dressing Table",
   },
   {
     id: "5",
-    src: "https://framerusercontent.com/images/E1SeXrbQeB7bVC1LQduOpuhLg.webp",
+    src: "/gallery-five.webp",
     alt: "FurniClass Bedroom Master Suite Curation",
   },
   {
     id: "6",
-    src: "https://framerusercontent.com/images/3GB2Pah9N4LedXnHFT9WWE6Gsk.webp",
+    src: "/gallery-six.webp",
     alt: "FurniClass Velvet Blue Luxury Bedding",
   },
 ];

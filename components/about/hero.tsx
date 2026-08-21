@@ -28,40 +28,36 @@ export default function AboutHero() {
       id: "chairs",
       title: "Chairs",
       slug: "chairs",
-      image:
-        "https://framerusercontent.com/images/omu7WWKCCJyngcInEeptxK9YXw.webp",
+      image: "/box-frame-lounge-chair.webp",
     },
     {
       id: "sofas",
       title: "Sofas",
       slug: "sofas",
-      image:
-        "https://framerusercontent.com/images/HMqkXwNuVYOTAjKNrQvWJ6ZFIg.webp",
+      image: "/white-soffa.webp",
     },
     {
       id: "tables",
       title: "Tables",
       slug: "tables",
-      image:
-        "https://framerusercontent.com/images/E1SeXrbQeB7bVC1LQduOpuhLg.webp",
+      image: "/accent-table.webp",
     },
     {
       id: "accessories",
       title: "Accessories",
       slug: "accessories",
-      image:
-        "https://framerusercontent.com/images/16l97Qq9LwD45bmJYfNnC7HCtLM.webp",
+      image: "/marble-top-hairpin-leg.webp",
     },
   ];
 
   return (
     <section
       aria-labelledby="about-hero-heading"
-      className="w-full bg-bg-main pt-6 pb-12 sm:pb-16 lg:pb-20 font-quicksand"
+      className="w-full bg-bg-main pb-12 sm:pb-16 lg:pb-20 font-quicksand"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Top Split Content Section */}
-        <div className="grid grid-cols-1 items-center justify-items-center gap-10 lg:grid-cols-12 lg:gap-12 text-center lg:text-left">
+        <div className="grid grid-cols-1 items-center justify-items-center gap-6 mt-6 lg:grid-cols-12 lg:gap-12 text-center lg:text-left">
           {/* Left Text Column */}
           <div className="lg:col-span-6 flex flex-col items-center lg:items-start text-center lg:text-left">
             <h2
@@ -128,7 +124,7 @@ export default function AboutHero() {
           <div className="lg:col-span-6 w-full flex justify-center">
             <div className="relative aspect-4/3 w-full max-w-lg lg:max-w-none overflow-hidden rounded-xs bg-bg-card shadow-md">
               <Image
-                src="https://framerusercontent.com/images/16l97Qq9LwD45bmJYfNnC7HCtLM.webp"
+                src="/about-us.webp"
                 alt="FurniClass luxury interior setup demonstrating craftsmanship"
                 fill
                 priority
@@ -147,13 +143,13 @@ export default function AboutHero() {
               className="group relative flex flex-col justify-between overflow-hidden bg-bg-card border border-border-light shadow-xs transition-all duration-300 hover:shadow-md hover:-translate-y-1"
             >
               {/* 1. Full-Width Image Container */}
-              <div className="relative aspect-4/3 w-full overflow-hidden bg-gray-100">
+              <div className="relative aspect-4/4 w-full overflow-hidden bg-gray-100">
                 <Image
                   src={cat.image}
                   alt={`FurniClass ${cat.title}`}
                   fill
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                  className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                  className="transition-transform duration-500"
                 />
               </div>
 

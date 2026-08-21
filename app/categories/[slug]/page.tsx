@@ -55,7 +55,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
       <section className="py-10 sm:py-14">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           {/* Top Header: Title + Inline Category Switcher */}
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8 pb-6 border-b border-gray-100">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8 pb-4 border-b border-gray-100">
             <h1 className="text-3xl font-bold text-dark">
               Explore {categoryTitle}
             </h1>

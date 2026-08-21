@@ -26,8 +26,7 @@ export default function Category() {
       name: "Chairs",
       description:
         "Ergonomic precision meets sculptured elegance. Crafted for dining spaces, executive suites, and private residences.",
-      image:
-        "https://framerusercontent.com/images/omu7WWKCCJyngcInEeptxK9YXw.webp",
+      image: "/nordic-oak-lounge.webp",
       href: "/categories/chairs",
     },
     {
@@ -35,8 +34,7 @@ export default function Category() {
       name: "Sofas",
       description:
         "Deep-seated comfort encased in architectural frameworks. Designed to serve as the anchor of sophisticated living environments.",
-      image:
-        "https://framerusercontent.com/images/HMqkXwNuVYOTAjKNrQvWJ6ZFIg.webp",
+      image: "/natural-oak-frame-soffa.webp",
       href: "/categories/sofas",
     },
     {
@@ -44,8 +42,7 @@ export default function Category() {
       name: "Tables",
       description:
         "Statement pieces carved from premium hardwoods, brushed metals, and sintered stone. Built for longevity and daily luxury.",
-      image:
-        "https://framerusercontent.com/images/E1SeXrbQeB7bVC1LQduOpuhLg.webp",
+      image: "/bent-leg-table.webp",
       href: "/categories/tables",
     },
     {
@@ -53,8 +50,7 @@ export default function Category() {
       name: "Accessories",
       description:
         "Curated accents, ambient lamps, and decorative centerpieces designed to elevate every corner of your interior spaces.",
-      image:
-        "https://framerusercontent.com/images/16l97Qq9LwD45bmJYfNnC7HCtLM.webp",
+      image: "/black-bean-bag.webp",
       href: "/categories/accessories",
     },
   ];
@@ -113,10 +109,10 @@ export default function Category() {
                   {/* Card Content */}
                   <div className="flex flex-1 flex-col justify-between p-3 text-center">
                     <div>
-                      <h3 className="font-quicksand text-2xl font-bold text-dark group-hover:text-primary transition-colors">
+                      <h3 className="font-quicksand text-2xl font-bold text-dark transition-colors group-hover:text-primary">
                         <Link
                           href={category.href}
-                          className="focus-visible:outline-2 focus-visible:outline-primary rounded-xs"
+                          className="rounded-xs focus-visible:outline-2 focus-visible:outline-primary"
                           aria-label={`Explore FurniClass ${category.name} category`}
                         >
                           <span
@@ -126,7 +122,8 @@ export default function Category() {
                           {category.name}
                         </Link>
                       </h3>
-                      <p className="mt-2 font-quicksand text-sm text-muted-light leading-relaxed line-clamp-3">
+
+                      <p className="mt-2 font-quicksand text-sm leading-relaxed text-muted-light line-clamp-3">
                         {category.description}
                       </p>
                     </div>

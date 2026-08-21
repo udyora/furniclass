@@ -26,7 +26,7 @@ export default function RelatedProducts({ products }: RelatedProductsProps) {
         {products.map((item) => (
           <Link
             key={item.slug}
-            href={`/shop/${item.slug}`}
+            href={`/categories/${item.slug}`}
             className="group bg-bg-card border border-border-light overflow-hidden rounded-xs transition-all hover:shadow-md block cursor-pointer"
           >
             <div className="relative aspect-square w-full bg-bg-main overflow-hidden">

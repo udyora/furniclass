@@ -9,6 +9,11 @@ export const enquiryType = defineType({
     defineField({ name: "email", title: "Customer Email", type: "string" }),
     defineField({ name: "phone", title: "Phone Number", type: "string" }),
     defineField({ name: "productName", title: "Product Name", type: "string" }),
+    defineField({
+      name: "selectedColor",
+      title: "Selected Color/Finish",
+      type: "string",
+    }),
     defineField({ name: "quantity", title: "Quantity", type: "number" }),
     defineField({
       name: "location",
@@ -17,7 +22,7 @@ export const enquiryType = defineType({
     }),
     defineField({
       name: "details",
-      title: "Custom Specifications",
+      title: "Custom Specifications / Message",
       type: "text",
     }),
     defineField({
