@@ -94,7 +94,7 @@ export default function ProductPage({ params }: ProductPageProps) {
               {product.name}
             </h1>
 
-            <div className="mt-6 flex items-center gap-4">
+            {/* <div className="mt-6 flex items-center gap-4">
               <span className="text-2xl font-bold text-dark">
                 {product.price}
               </span>
@@ -104,7 +104,7 @@ export default function ProductPage({ params }: ProductPageProps) {
                   {product.originalPrice}
                 </span>
               )}
-            </div>
+            </div> */}
 
             <p className="mt-6 max-w-xl text-base leading-7 text-muted-light">
               {product.description}

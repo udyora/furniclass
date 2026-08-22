@@ -119,7 +119,7 @@ export default function ShopPage() {
     <main className="min-h-screen font-quicksand bg-white">
       <PageBanner />
 
-      <section className="py-12 sm:py-16">
+      <section className="py-12 sm:py-13">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
             <aside className="lg:col-span-3 space-y-6">

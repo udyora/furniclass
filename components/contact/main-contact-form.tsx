@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { CustomToast } from "@/components/common/toast";
 import { Loader2, Upload, X } from "lucide-react";
+import { usePathname } from "next/navigation";
 
 interface CustomEnquiryFormProps {
   sourceName?: string;
@@ -83,12 +84,21 @@ export default function MainContactForm({
     e.preventDefault();
     submitMutation.mutate(formData);
   };
+  const pathname = usePathname();
+  const isContactUs = pathname === "/contact-us";
 
   return (
     <form
       onSubmit={handleSubmit}
-      className="bg-bg-card p-6 sm:p-10 border border-border-light font-quicksand space-y-6 rounded-xs"
+      className="bg-bg-card p-6 border border-border-light font-quicksand space-y-6 rounded-xs"
     >
+      <h2
+        className={`text-primary font-bold border-b border-b-black/10 pb-4 text-2xl ${
+          isContactUs ? "text-center lg:text-start" : "text-center"
+        }`}
+      >
+        Custom Furniture Enquiry Form
+      </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
         <div>
           <label className="block text-sm font-semibold text-dark mb-1.5">
@@ -221,7 +231,11 @@ export default function MainContactForm({
         />
       </div>
 
-      <div className="flex justify-center pt-2">
+      <div
+        className={`flex pt-2 ${
+          isContactUs ? "justify-center lg:justify-start" : "justify-center"
+        }`}
+      >
         <button
           type="submit"
           disabled={submitMutation.isPending}

@@ -57,7 +57,7 @@ export default function AboutHero() {
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Top Split Content Section */}
-        <div className="grid grid-cols-1 items-center justify-items-center gap-6 mt-6 lg:grid-cols-12 lg:gap-12 text-center lg:text-left">
+        <div className="grid grid-cols-1 items-center justify-items-center gap-6 mt-4 lg:grid-cols-12 lg:gap-12 text-center lg:text-left">
           {/* Left Text Column */}
           <div className="lg:col-span-6 flex flex-col items-center lg:items-start text-center lg:text-left">
             <h2

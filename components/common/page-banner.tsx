@@ -36,7 +36,7 @@ export default function Hero() {
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           {/* Main Wrapper */}
-          <div className="flex items-center gap-4 sm:gap-6 mb-8 overflow-hidden">
+          <div className="flex items-center gap-4 sm:gap-6 overflow-hidden">
             {/* 1. Fixed Left Image (Clickable & Larger) */}
             <div
               onClick={() => setIsModalOpen(true)}

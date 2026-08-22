@@ -65,22 +65,17 @@ export default function CategoryPage({ params }: CategoryPageProps) {
                 Other Categories:
               </span>
               <div className="flex flex-wrap items-center gap-2">
-                {allCategories.map((cat) => {
-                  const isActive = cat.id === slug;
-                  return (
+                {allCategories
+                  .filter((cat) => cat.id !== slug)
+                  .map((cat) => (
                     <Link
                       key={cat.id}
                       href={cat.href}
-                      className={`px-3.5 py-1.5 text-xs font-bold rounded-xs transition-all ${
-                        isActive
-                          ? "bg-primary text-white shadow-xs"
-                          : "bg-[#f4f5f7] text-gray-700 hover:bg-primary/10 hover:text-primary"
-                      }`}
+                      className="px-3.5 py-1.5 text-xs font-bold rounded-xs transition-all bg-[#f4f5f7] text-gray-700 hover:bg-primary/10 hover:text-primary"
                     >
                       {cat.name}
                     </Link>
-                  );
-                })}
+                  ))}
               </div>
             </div>
           </div>
@@ -139,16 +134,16 @@ export default function CategoryPage({ params }: CategoryPageProps) {
                   </div>
 
                   <div className="p-4">
-                    <h2 className="text-xl font-bold text-gray-800 group-hover:text-primary transition-colors">
+                    <h2 className="text-xl text-center font-bold text-gray-800 group-hover:text-primary transition-colors">
                       {product.name}
                     </h2>
-
+                    {/* 
                     <p className="mt-1 text-xs text-gray-500 line-clamp-2">
                       {product.description}
-                    </p>
+                    </p> */}
 
                     <div className="mt-4 flex items-center justify-between">
-                      <div className="flex items-center gap-2">
+                      {/* <div className="flex items-center gap-2">
                         <span className="text-sm font-bold text-gray-900">
                           {product.price}
                         </span>
@@ -157,14 +152,15 @@ export default function CategoryPage({ params }: CategoryPageProps) {
                             {product.originalPrice}
                           </span>
                         )}
+                      </div> */}
+                      <div className="flex justify-center w-full border-t pt-3 border-t-black/10">
+                        <button
+                          type="button"
+                          className="px-4 py-1.5 bg-primary hover:bg-primary-hover text-white text-sm font-bold rounded-xs transition-colors cursor-pointer"
+                        >
+                          Enquire Now
+                        </button>
                       </div>
-
-                      <button
-                        type="button"
-                        className="px-4 py-1.5 bg-primary hover:bg-primary-hover text-white text-xs font-bold rounded-xs transition-colors cursor-pointer"
-                      >
-                        Enquire Now
-                      </button>
                     </div>
                   </div>
                 </div>

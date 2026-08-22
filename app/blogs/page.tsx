@@ -90,7 +90,7 @@ export default function BlogsPage() {
     <main className="min-h-screen font-quicksand bg-bg-main pb-20">
       <PageBanner />
       <SectionHeading className="pt-12" title="Blogs" />
-      <section className="pb-12 pt-6 sm:pb-16">
+      <section className="pt-4">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 items-start">
             {/* Main Blog Grid Area */}

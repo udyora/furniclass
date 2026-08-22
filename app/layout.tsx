@@ -32,7 +32,7 @@ const titillium = Titillium_Web({
 });
 
 export const metadata: Metadata = {
-  title: "FurniHub | Premium Furniture Studio",
+  title: "Furniclass | Premium Furniture Studio",
   description: "Make to order premium handcrafted furniture studio.",
 };
 

@@ -39,7 +39,7 @@ export default function Hero() {
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           {/* Main Wrapper with Fixed Left Image + Marquee Slider */}
-          <div className="flex items-center gap-4 sm:gap-6 mb-8 overflow-hidden">
+          <div className="flex items-center gap-4 sm:gap-6 overflow-hidden">
             {/* 1. Fixed Left Image (Clickable trigger for Modal) */}
             <div
               onClick={() => setIsModalOpen(true)}
@@ -79,10 +79,8 @@ export default function Hero() {
             </div>
           </div>
 
-          <SectionHeading className="pt-12" title="Custom Furniture Enquiry" />
-
           {/* 3. Contact Form */}
-          <div id="form-section" className="w-full mt-6">
+          <div id="form-section" className="w-full mt-13">
             <MainContactForm />
           </div>
         </div>

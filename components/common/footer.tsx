@@ -49,26 +49,12 @@ export default function Footer() {
                 className="inline-flex items-center gap-3 text-dark hover:opacity-95 transition-opacity"
               >
                 <Image
-                  width={28}
+                  width={200}
                   height={28}
-                  src="/white-logo.svg"
+                  src="/footer-logo.svg"
                   alt="Furniclass Logo"
                   className="object-contain"
                 />
-                <div className="flex flex-col items-center md:items-start">
-                  {/* Domain Name */}
-                  <span className="font-quicksand text-lg font-extrabold tracking-tight text-white leading-none">
-                    furniclass<span className="text-white">.com</span>
-                  </span>
-
-                  {/* Attractive Underline / Divider */}
-                  <span className="my-1 h-0.5 w-full rounded-full bg-bg-cream" />
-
-                  {/* Subtitle */}
-                  <span className="font-quicksand text-xs font-bold uppercase text-white leading-none">
-                    Premium Make To Order Studio
-                  </span>
-                </div>
               </Link>
 
               <p className="mt-4 text-sm font-normal text-white/90 leading-relaxed lg:max-w-sm">

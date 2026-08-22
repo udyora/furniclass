@@ -15,19 +15,12 @@ export default function ContactPage() {
     <main className="min-h-screen font-quicksand bg-bg-main pb-20">
       <PageBanner />
 
-      <section className="py-12 sm:pb-16">
+      <section className="py-8 sm:py-12">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           {/* Header Text */}
-          <div className="text-center max-w-3xl mx-auto mb-6">
-            <h2 className="text-3xl sm:text-4xl font-bold text-primary">
-              Get In Touch With Us
-            </h2>
-            <p className="mt-3 text-sm sm:text-base text-muted-light font-normal leading-relaxed">
-              For more information about our products, custom furniture
-              manufacturing, or quick orders, please feel free to drop us an
-              inquiry. Our craft experts are always here to help you out!
-            </p>
-          </div>
+          <h2 className="text-3xl mb-4 max-lg:text-center font-bold text-primary">
+            Get In Touch With Us
+          </h2>
 
           {/* Grid Layout: Left Info Card + Right Order/Contact Form */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">

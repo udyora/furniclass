@@ -12,6 +12,7 @@ export default function Navbar() {
   const navLinks = [
     { name: "Home", href: "/" },
     { name: "About Us", href: "/about-us" },
+    { name: "Categories", href: "/categories" },
     { name: "Gallery", href: "/gallery" },
     // { name: "Testimonials", href: "/#testimonials" },
     { name: "Blogs", href: "/blogs" },
@@ -33,26 +34,12 @@ export default function Navbar() {
           className="inline-flex items-center gap-3 text-dark hover:opacity-95 transition-opacity"
         >
           <Image
-            width={28}
+            width={200}
             height={28}
             src="/logo.svg"
             alt="Furniclass Logo"
             className="object-contain"
           />
-          <div className="flex flex-col">
-            {/* Domain Name */}
-            <span className="font-quicksand text-lg font-extrabold tracking-tight text-dark leading-none">
-              furniclass<span className="text-primary">.com</span>
-            </span>
-
-            {/* Attractive Center Underline / Divider */}
-            <span className="my-1 h-0.5 w-full rounded-full bg-linear-to-r from-primary via-gold to-transparent opacity-80" />
-
-            {/* Subtitle */}
-            <span className="font-quicksand text-xs font-bold uppercase text-muted-light leading-none">
-              Premium Make To Order Studio
-            </span>
-          </div>
         </Link>
         {/* Primary Navigation for lg Screens */}
         <nav

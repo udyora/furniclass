@@ -65,7 +65,7 @@ export default function GalleryGrid() {
       {/* Main Gallery Grid Section */}
       <section
         aria-labelledby="gallery-grid-heading"
-        className="w-full bg-bg-main pt-6 pb-16 sm:pb-20 font-quicksand"
+        className="w-full bg-bg-main pt-4 pb-16 sm:pb-20 font-quicksand"
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <h2 id="gallery-grid-heading" className="sr-only">
