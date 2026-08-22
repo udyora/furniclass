@@ -7,7 +7,7 @@ import { X } from "lucide-react";
 import SectionHeading from "./common/section-heading";
 
 const fixedImage = {
-  src: "/furniclass-logo.png",
+  src: "/Furniclass-logo.png",
   alt: "Furniclass Logo",
 };
 

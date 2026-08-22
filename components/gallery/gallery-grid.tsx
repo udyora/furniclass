@@ -18,32 +18,32 @@ const galleryImages: GalleryImage[] = [
   {
     id: "1",
     src: "/gallery-one.webp",
-    alt: "FurniClass Modern Dining Room Setup",
+    alt: "Furniclass Modern Dining Room Setup",
   },
   {
     id: "2",
     src: "/gallery-two.webp",
-    alt: "FurniClass Minimalist Executive Table Curation",
+    alt: "Furniclass Minimalist Executive Table Curation",
   },
   {
     id: "3",
     src: "/chrome-table.webp",
-    alt: "FurniClass Bar Stools Lounge Area",
+    alt: "Furniclass Bar Stools Lounge Area",
   },
   {
     id: "4",
     src: "/gallery-four.webp",
-    alt: "FurniClass Antique Wooden Dressing Table",
+    alt: "Furniclass Antique Wooden Dressing Table",
   },
   {
     id: "5",
     src: "/gallery-five.webp",
-    alt: "FurniClass Bedroom Master Suite Curation",
+    alt: "Furniclass Bedroom Master Suite Curation",
   },
   {
     id: "6",
     src: "/gallery-six.webp",
-    alt: "FurniClass Velvet Blue Luxury Bedding",
+    alt: "Furniclass Velvet Blue Luxury Bedding",
   },
 ];
 
@@ -69,7 +69,7 @@ export default function GalleryGrid() {
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <h2 id="gallery-grid-heading" className="sr-only">
-            FurniClass Portfolio Gallery
+            Furniclass Portfolio Gallery
           </h2>
 
           {/* 3 Columns Image Grid */}

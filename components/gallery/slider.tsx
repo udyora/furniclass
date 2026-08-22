@@ -23,28 +23,28 @@ export default function GallerySection() {
       title: "Minimalist Corner Setup",
       image:
         "https://framerusercontent.com/images/16l97Qq9LwD45bmJYfNnC7HCtLM.webp",
-      alt: "FurniClass minimalist interior corner transformation",
+      alt: "Furniclass minimalist interior corner transformation",
     },
     {
       id: "gallery-2",
       title: "Bespoke Dining Interior",
       image:
         "https://framerusercontent.com/images/M5UOPtlamIUkwnieQ3yYAxPFskc.webp",
-      alt: "FurniClass custom dining room installation",
+      alt: "Furniclass custom dining room installation",
     },
     {
       id: "gallery-3",
       title: "Luxury Living Lounge",
       image:
         "https://framerusercontent.com/images/HMqkXwNuVYOTAjKNrQvWJ6ZFIg.webp",
-      alt: "FurniClass handcrafted sofa in modern living room",
+      alt: "Furniclass handcrafted sofa in modern living room",
     },
     {
       id: "gallery-4",
       title: "Executive Workspace Setup",
       image:
         "https://framerusercontent.com/images/omu7WWKCCJyngcInEeptxK9YXw.webp",
-      alt: "FurniClass custom wooden office workspace setup",
+      alt: "Furniclass custom wooden office workspace setup",
     },
   ];
 

@@ -3,15 +3,15 @@ import GalleryGrid from "@/components/gallery/gallery-grid";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Gallery | FurniClass",
+  title: "Gallery | Furniclass",
   description:
-    "Explore our gallery of transformed spaces, bespoke furniture designs, and luxury interior concepts crafted by FurniClass.",
+    "Explore our gallery of transformed spaces, bespoke furniture designs, and luxury interior concepts crafted by Furniclass.",
   openGraph: {
-    title: "Gallery | FurniClass",
+    title: "Gallery | Furniclass",
     description:
       "Explore our gallery of transformed spaces and bespoke luxury furniture.",
-    url: "https://furniclass.com/gallery",
-    siteName: "FurniClass",
+    url: "https://Furniclass.com/gallery",
+    siteName: "Furniclass",
     type: "website",
   },
 };

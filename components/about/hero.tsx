@@ -79,7 +79,7 @@ export default function AboutHero() {
             {/* Checkmark Features List */}
             <ul
               className="mt-6 space-y-3.5 flex flex-col items-center lg:items-start"
-              aria-label="FurniClass core quality features"
+              aria-label="Furniclass core quality features"
             >
               {features.map((feature) => (
                 <li key={feature.id} className="flex items-center gap-3">
@@ -113,7 +113,7 @@ export default function AboutHero() {
                 href="/categories/sofas"
                 variant="primary"
                 size="md"
-                ariaLabel="Explore FurniClass categories"
+                ariaLabel="Explore Furniclass categories"
               >
                 Enquire Now
               </Button>
@@ -125,7 +125,7 @@ export default function AboutHero() {
             <div className="relative aspect-4/3 w-full max-w-lg lg:max-w-none overflow-hidden rounded-xs bg-bg-card shadow-md">
               <Image
                 src="/about-us.webp"
-                alt="FurniClass luxury interior setup demonstrating craftsmanship"
+                alt="Furniclass luxury interior setup demonstrating craftsmanship"
                 fill
                 priority
                 sizes="(max-width: 1024px) 100vw, 50vw"
@@ -146,7 +146,7 @@ export default function AboutHero() {
               <div className="relative aspect-4/4 w-full overflow-hidden bg-gray-100">
                 <Image
                   src={cat.image}
-                  alt={`FurniClass ${cat.title}`}
+                  alt={`Furniclass ${cat.title}`}
                   fill
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                   className="transition-transform duration-500"

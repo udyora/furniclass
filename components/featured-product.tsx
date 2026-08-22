@@ -96,7 +96,7 @@ export default function FeaturedProducts() {
         <SectionHeading
           id="products-heading"
           title="Curated Selection"
-          subtitle="Signature FurniClass pieces designed for modern residential and commercial environments."
+          subtitle="Signature Furniclass pieces designed for modern residential and commercial environments."
         />
 
         {/* Product Cards Grid: 4 Columns (Desktop), 2 Columns (Tablet), 1 Column (Mobile) */}
@@ -110,7 +110,7 @@ export default function FeaturedProducts() {
               <div className="relative aspect-square w-full overflow-hidden bg-border-light">
                 <Image
                   src={product.image}
-                  alt={`FurniClass ${product.name}`}
+                  alt={`Furniclass ${product.name}`}
                   fill
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                   className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
@@ -145,7 +145,7 @@ export default function FeaturedProducts() {
             href="/shop"
             variant="primary"
             size="md"
-            ariaLabel="Explore all FurniClass products"
+            ariaLabel="Explore all Furniclass products"
           >
             Explore All Products
           </Button>

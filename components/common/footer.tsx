@@ -58,7 +58,7 @@ export default function Footer() {
               </Link>
 
               <p className="mt-4 text-sm font-normal text-white/90 leading-relaxed lg:max-w-sm">
-                At <span className="font-semibold">FurniClass</span>, we believe
+                At <span className="font-semibold">Furniclass</span>, we believe
                 your home deserves furniture that combines style, comfort, and
                 quality. From modern designs to timeless classics, each piece is
                 crafted to enhance your living spaces. Our curated collections
@@ -189,10 +189,10 @@ export default function Footer() {
                       <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
                     </svg>
                     <a
-                      href="mailto:concierge@furniclass.com"
+                      href="mailto:concierge@Furniclass.com"
                       className="hover:underline"
                     >
-                      concierge@furniclass.com
+                      concierge@Furniclass.com
                     </a>
                   </li>
                   <li className="flex items-center justify-center md:justify-start gap-2.5">
@@ -222,7 +222,7 @@ export default function Footer() {
 
       {/* Bottom Copyright Bar */}
       <div className="bg-gold text-white text-center py-3.5 px-4 font-normal">
-        © 2026 FurniClass Craftsmanship Ltd. All rights reserved.
+        © 2026 Furniclass Craftsmanship Ltd. All rights reserved.
       </div>
     </footer>
   );

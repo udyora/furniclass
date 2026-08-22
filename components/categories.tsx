@@ -99,7 +99,7 @@ export default function Category() {
                   <div className="relative aspect-4/3 w-full overflow-hidden bg-border-light">
                     <Image
                       src={category.image}
-                      alt={`FurniClass ${category.name} collection`}
+                      alt={`Furniclass ${category.name} collection`}
                       fill
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
@@ -113,7 +113,7 @@ export default function Category() {
                         <Link
                           href={category.href}
                           className="rounded-xs focus-visible:outline-2 focus-visible:outline-primary"
-                          aria-label={`Explore FurniClass ${category.name} category`}
+                          aria-label={`Explore Furniclass ${category.name} category`}
                         >
                           <span
                             className="absolute inset-0"

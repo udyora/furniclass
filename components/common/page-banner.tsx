@@ -5,7 +5,7 @@ import Image from "next/image";
 import { X } from "lucide-react";
 
 const fixedImage = {
-  src: "/furniclass-logo.png",
+  src: "/Furniclass-logo.png",
   alt: "Furniclass Logo",
 };
 

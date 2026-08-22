@@ -8,7 +8,7 @@ interface BlogDetailPageProps {
 }
 
 export const metadata: Metadata = {
-  title: "The Charm of Minimalist Interiors | FurniClass Blog",
+  title: "The Charm of Minimalist Interiors | Furniclass Blog",
   description:
     "Explore what makes minimalist interior design so appealing, popular décor ideas, and how to bring this timeless style into your space.",
 };

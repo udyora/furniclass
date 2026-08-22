@@ -5,9 +5,9 @@ import ContactForm from "@/components/contact/contact-form";
 import MainContactForm from "@/components/contact/main-contact-form";
 
 export const metadata: Metadata = {
-  title: "Contact Us & Custom Orders | FurniClass",
+  title: "Contact Us & Custom Orders | Furniclass",
   description:
-    "Get in touch with FurniClass or place custom furniture manufacturing orders in Mlerna, Faridabad.",
+    "Get in touch with Furniclass or place custom furniture manufacturing orders in Mlerna, Faridabad.",
 };
 
 export default function ContactPage() {

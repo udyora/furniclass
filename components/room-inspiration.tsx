@@ -39,7 +39,7 @@ export default function RoomInspiration() {
       role: "Homeowner",
       location: "Mumbai",
       review:
-        "From selecting custom fabric options to final installation, FurniClass made the entire process effortless. The solid wood dining table is now the star attraction of our home.",
+        "From selecting custom fabric options to final installation, Furniclass made the entire process effortless. The solid wood dining table is now the star attraction of our home.",
       rating: 5,
       avatar:
         "https://framerusercontent.com/images/M5UOPtlamIUkwnieQ3yYAxPFskc.webp",
@@ -50,7 +50,7 @@ export default function RoomInspiration() {
       role: "Architect",
       location: "Bengaluru",
       review:
-        "Finding bespoke furniture with precise custom dimensions used to be a hassle. FurniClass exceeded all our expectations for our modern villa project.",
+        "Finding bespoke furniture with precise custom dimensions used to be a hassle. Furniclass exceeded all our expectations for our modern villa project.",
       rating: 5,
       avatar:
         "https://framerusercontent.com/images/omu7WWKCCJyngcInEeptxK9YXw.webp",
@@ -99,7 +99,7 @@ export default function RoomInspiration() {
                 href="/contact-us"
                 variant="primary"
                 size="md"
-                ariaLabel="Enquire for custom furniture built by FurniClass"
+                ariaLabel="Enquire for custom furniture built by Furniclass"
               >
                 Start Custom Order
               </Button>

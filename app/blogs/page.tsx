@@ -6,9 +6,9 @@ import BlogSidebar from "@/components/blogs/blog-sidebar";
 import SectionHeading from "@/components/common/section-heading";
 
 export const metadata: Metadata = {
-  title: "Blogs & Interior Insights | FurniClass",
+  title: "Blogs & Interior Insights | Furniclass",
   description:
-    "Explore luxury furniture buying guides, interior design inspiration, and home styling tips from FurniClass.",
+    "Explore luxury furniture buying guides, interior design inspiration, and home styling tips from Furniclass.",
 };
 
 interface BlogPost {

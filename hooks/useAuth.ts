@@ -8,12 +8,12 @@ export function useAuth() {
   const [isLoggingIn, setIsLoggingIn] = useState(false);
 
   useEffect(() => {
-    const session = localStorage.getItem("furniclass_admin_session");
+    const session = localStorage.getItem("Furniclass_admin_session");
     if (session) {
       try {
         setUser(JSON.parse(session));
       } catch {
-        localStorage.removeItem("furniclass_admin_session");
+        localStorage.removeItem("Furniclass_admin_session");
       }
     }
     setIsLoading(false);
@@ -32,7 +32,7 @@ export function useAuth() {
     if (email === "admin@studio.com" && password === "AdminPass123!") {
       const userData = { name: "Studio Owner", email };
       localStorage.setItem(
-        "furniclass_admin_session",
+        "Furniclass_admin_session",
         JSON.stringify(userData),
       );
       setUser(userData);
@@ -45,7 +45,7 @@ export function useAuth() {
   };
 
   const logout = () => {
-    localStorage.removeItem("furniclass_admin_session");
+    localStorage.removeItem("Furniclass_admin_session");
     setUser(null);
     window.location.href = "/admin/login";
   };
