@@ -57,7 +57,7 @@ export default function Footer() {
                 />
                 <div className="flex flex-col">
                   {/* Domain Name */}
-                  <span className="font-quicksand text-lg font-extrabold tracking-tight text-white leading-none">
+                  <span className="font-quicksand text-lg text-start font-extrabold tracking-tight text-white leading-none">
                     furniclass.com
                   </span>
 
@@ -65,7 +65,7 @@ export default function Footer() {
                   <span className="my-1 h-0.5 w-full rounded-full bg-white opacity-80" />
 
                   {/* Subtitle */}
-                  <span className="font-quicksand text-xs font-bold uppercase text-white leading-none">
+                  <span className="font-quicksand text-start text-xs font-bold uppercase text-white leading-none">
                     Make To Order Studio
                   </span>
                 </div>
