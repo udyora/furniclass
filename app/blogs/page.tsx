@@ -93,7 +93,7 @@ export default function BlogsPage() {
       <section className="">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto w-full max-w-7xl py-3 px-4 sm:px-6 lg:px-8 bg-bg-card border border-border-light font-quicksand rounded-xs">
-            <h2 className="text-primary font-bold text-2xl text-center">
+            <h2 className="text-primary font-bold text-lg text-center">
               Furniclass Blogs
             </h2>
           </div>
