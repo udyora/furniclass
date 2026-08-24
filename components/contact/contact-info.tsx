@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function ContactInfo() {
   return (
     <div className="bg-primary h-full text-white p-6 border border-border-light space-y-6 rounded-xs font-quicksand">

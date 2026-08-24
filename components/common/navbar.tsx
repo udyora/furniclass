@@ -34,26 +34,21 @@ export default function Navbar() {
           className="inline-flex items-center gap-3 text-dark hover:opacity-95 transition-opacity"
         >
           <Image
-            width={38}
-            height={38}
+            width={200}
+            height={58}
             src="/logo.svg"
             alt="Furniclass Logo"
             className="object-contain"
           />
-          <div className="flex flex-col">
-            {/* Domain Name */}
-            <span className="font-quicksand text-lg font-extrabold tracking-tight text-dark leading-none">
+          {/* <div className="flex flex-col">
+            <span className="font-quicksand text-[29px] text-start font-extrabold text-dark leading-none">
               furniclass<span className="text-primary">.com</span>
             </span>
-
-            {/* Attractive Center Underline / Divider */}
             <span className="my-1 h-0.5 w-full rounded-full bg-primary opacity-80" />
-
-            {/* Subtitle */}
-            <span className="font-quicksand text-xs font-bold uppercase text-muted-light leading-none">
-              Make To Order Studio
+            <span className="font-quicksand text-xs font-bold uppercase text-muted-light tracking-[0.1px] leading-none">
+              Premium Make To Order Studio
             </span>
-          </div>
+          </div> */}
         </Link>
         {/* Primary Navigation for lg Screens */}
         <nav
@@ -90,7 +85,7 @@ export default function Navbar() {
         <button
           type="button"
           onClick={() => setIsOpen((prev) => !prev)}
-          className="inline-flex items-center justify-center rounded-md p-2 text-dark hover:bg-bg-card hover:text-primary lg:hidden cursor-pointer"
+          className="inline-flex items-center justify-center bg-bg-cream rounded-md p-2 text-primary hover:bg-bg-card hover:text-primary lg:hidden cursor-pointer"
           aria-expanded={isOpen}
           aria-controls="mobile-navigation"
           aria-label="Toggle menu"
