@@ -187,7 +187,7 @@ export default function Footer() {
                     </svg>
                     <span className="">
                       3F-05, Ozone Center, Sector 12, Faridabad, 121007,
-                      HAryana, Delhi NCR
+                      Haryana, Delhi NCR
                     </span>
                   </li>
                   <li className="flex items-center justify-center md:justify-start gap-2.5">
