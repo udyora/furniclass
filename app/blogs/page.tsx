@@ -89,9 +89,15 @@ export default function BlogsPage() {
   return (
     <main className="font-quicksand bg-bg-main">
       <PageBanner />
+
       <section className="">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 gap-6 lg:grid-cols-12 items-start">
+          <div className="mx-auto w-full max-w-7xl py-3 px-4 sm:px-6 lg:px-8 bg-bg-card border border-border-light font-quicksand rounded-xs">
+            <h2 className="text-primary font-bold text-2xl text-center">
+              Furniclass Blogs
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 mt-6 gap-6 lg:grid-cols-12 items-start">
             {/* Main Blog Grid Area */}
             <div className="lg:col-span-8 w-full">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full">

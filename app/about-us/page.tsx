@@ -12,7 +12,6 @@ export default function AboutUsPage() {
   return (
     <main>
       <PageBanner />
-
       <AboutHero />
     </main>
   );

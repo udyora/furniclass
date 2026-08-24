@@ -61,6 +61,11 @@ export default function Category() {
       className="w-full overflow-hidden"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto w-full max-w-7xl py-3 px-4 sm:px-6 lg:px-8 bg-bg-card border border-border-light font-quicksand rounded-xs">
+          <h2 className="text-primary font-bold text-2xl text-center">
+            Furniclass Category
+          </h2>
+        </div>
         {/* <SectionHeading
           id="category-heading"
           title="Categories"
@@ -68,7 +73,7 @@ export default function Category() {
         /> */}
 
         {/* Category Swiper Slider Showcase */}
-        <div className="w-full overflow-hidden">
+        <div className="w-full overflow-hidden mt-6">
           <Swiper
             modules={[Autoplay, Pagination]}
             spaceBetween={40}

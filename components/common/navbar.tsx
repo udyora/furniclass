@@ -51,7 +51,7 @@ export default function Navbar() {
 
             {/* Subtitle */}
             <span className="font-quicksand text-xs font-bold uppercase text-muted-light leading-none">
-              Premium Make To Order Studio
+              Make To Order Studio
             </span>
           </div>
         </Link>

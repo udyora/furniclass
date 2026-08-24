@@ -105,7 +105,7 @@ export default function Hero() {
           {/* Modal Enlarged Image Container */}
           <div
             onClick={(e) => e.stopPropagation()}
-            className="relative w-full max-w-md sm:max-w-lg aspect-square bg-[#0e0e0e] border-2 border-white/20 shadow-2xl overflow-hidden p-6 animate-scaleUp"
+            className="relative w-full max-w-md sm:max-w-lg aspect-square bg-[#040B1E] border-2 border-white/20 shadow-2xl overflow-hidden p-6 animate-scaleUp"
           >
             <Image
               src={fixedImage.src}

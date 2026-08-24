@@ -66,7 +66,7 @@ export default function Footer() {
 
                   {/* Subtitle */}
                   <span className="font-quicksand text-xs font-bold uppercase text-white leading-none">
-                    Premium Make To Order Studio
+                    Make To Order Studio
                   </span>
                 </div>
               </Link>
@@ -185,9 +185,9 @@ export default function Footer() {
                       <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
                       <circle cx="12" cy="10" r="3" />
                     </svg>
-                    <span className="lowercase">
-                      3F-05, OZONE CENTER, SECTOR 12, FARIDABAD, 121007,
-                      HARYANA, DELHI NCR
+                    <span className="">
+                      3F-05, Ozone Center, Sector 12, Faridabad, 121007,
+                      HAryana, Delhi NCR
                     </span>
                   </li>
                   <li className="flex items-center justify-center md:justify-start gap-2.5">
@@ -206,10 +206,10 @@ export default function Footer() {
                       <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
                     </svg>
                     <a
-                      href="mailto:concierge@Furniclass.com"
+                      href="mailto:concierge@furniclass.com"
                       className="hover:underline"
                     >
-                      concierge@Furniclass.com
+                      concierge@furniclass.com
                     </a>
                   </li>
                   <li className="flex items-center justify-center md:justify-start gap-2.5">

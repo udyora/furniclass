@@ -93,7 +93,7 @@ export default function Hero() {
 
           <div
             onClick={(e) => e.stopPropagation()}
-            className="relative w-full max-w-md sm:max-w-lg aspect-square bg-[#0e0e0e] border-2 border-white/20 shadow-2xl overflow-hidden p-6"
+            className="relative w-full max-w-md sm:max-w-lg aspect-square bg-[#040B1E] border-2 border-white/20 shadow-2xl overflow-hidden p-6"
           >
             <Image
               src={fixedImage.src}

@@ -93,7 +93,7 @@ export default function MainContactForm({
       className="bg-bg-card p-6 border border-border-light font-quicksand space-y-6 rounded-xs"
     >
       <h2
-        className={`text-primary font-bold border-b border-b-black/10 pb-4 text-2xl ${
+        className={`text-primary font-bold border-b border-b-black/10 pb-4 text-lg ${
           isContactUs ? "text-center lg:text-start" : "text-center"
         }`}
       >

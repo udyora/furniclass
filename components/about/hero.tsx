@@ -56,8 +56,13 @@ export default function AboutHero() {
       className="w-full bg-bg-main font-quicksand"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto w-full max-w-7xl py-3 px-4 sm:px-6 lg:px-8 bg-bg-card border border-border-light font-quicksand rounded-xs">
+          <h2 className="text-primary font-bold text-2xl text-center">
+            About Furniclass
+          </h2>
+        </div>
         {/* Top Split Content Section */}
-        <div className="grid grid-cols-1 gap-6 lg:grid-cols-12 lg:gap-12 text-center lg:text-left">
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-12 lg:gap-12 text-center lg:text-left mt-6">
           {/* Left Text Column */}
           <div className="lg:col-span-6 flex flex-col items-center lg:items-start text-center lg:text-left">
             <h2
