@@ -87,12 +87,11 @@ const posts: BlogPost[] = [
 
 export default function BlogsPage() {
   return (
-    <main className="min-h-screen font-quicksand bg-bg-main pb-20">
+    <main className="font-quicksand bg-bg-main">
       <PageBanner />
-      <SectionHeading className="pt-12" title="Blogs" />
-      <section className="pt-4">
+      <section className="">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 items-start">
+          <div className="grid grid-cols-1 gap-6 lg:grid-cols-12 items-start">
             {/* Main Blog Grid Area */}
             <div className="lg:col-span-8 w-full">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full">
@@ -178,16 +177,6 @@ export default function BlogsPage() {
                     </div>
                   </article>
                 ))}
-              </div>
-
-              {/* Load More Button */}
-              <div className="mt-10 flex justify-center">
-                <Link
-                  href="/blogs"
-                  className="px-8 py-3 bg-primary hover:bg-primary-hover text-white font-bold text-xs rounded-xs transition-colors shadow-xs"
-                >
-                  Load More
-                </Link>
               </div>
             </div>
 

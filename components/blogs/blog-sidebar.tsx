@@ -44,7 +44,7 @@ export default function BlogSidebar() {
   ];
 
   return (
-    <aside className="space-y-8 font-quicksand">
+    <aside className="space-y-6 font-quicksand">
       {/* Recent Posts Widget */}
       <div className="bg-bg-card p-6 rounded-xs border border-border-light shadow-xs">
         <h3 className="text-lg font-bold text-dark border-b border-border-light pb-3 mb-4">

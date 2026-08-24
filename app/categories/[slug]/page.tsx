@@ -49,20 +49,20 @@ export default function CategoryPage({ params }: CategoryPageProps) {
   };
 
   return (
-    <main className="min-h-screen font-quicksand bg-white pb-20">
+    <main className="font-quicksand bg-white">
       <PageBanner />
 
-      <section className="py-10 sm:py-14">
+      <section className="">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           {/* Top Header: Title + Inline Category Switcher */}
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8 pb-4 border-b border-gray-100">
-            <h1 className="text-3xl font-bold text-dark">
-              Explore {categoryTitle}
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-6 pb-2 border-b border-gray-300">
+            <h1 className="text-lg font-bold text-dark">
+              Cutomized {categoryTitle}
             </h1>
             {/* Other Categories / Related Navigation */}
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
-              <span className="text-xs font-bold text-gray-500 uppercase tracking-wider">
-                Other Categories:
+              <span className="text-base font-bold text-gray-500">
+                Explore Other Categories:
               </span>
               <div className="flex flex-wrap items-center gap-2">
                 {allCategories
@@ -71,7 +71,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
                     <Link
                       key={cat.id}
                       href={cat.href}
-                      className="px-3.5 py-1.5 text-xs font-bold rounded-xs transition-all bg-[#f4f5f7] text-gray-700 hover:bg-primary/10 hover:text-primary"
+                      className="px-3.5 py-1.5 text-base font-bold rounded-xs transition-all bg-[#f4f5f7] text-gray-700 hover:bg-primary/10 hover:text-primary"
                     >
                       {cat.name}
                     </Link>
@@ -81,7 +81,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
           </div>
 
           {/* Search Bar & Result Count */}
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-6">
             <p className="text-xs font-semibold text-gray-500">
               Showing {filteredProducts.length} items
             </p>

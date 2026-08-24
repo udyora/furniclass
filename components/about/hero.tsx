@@ -53,11 +53,11 @@ export default function AboutHero() {
   return (
     <section
       aria-labelledby="about-hero-heading"
-      className="w-full bg-bg-main pb-12 sm:pb-16 lg:pb-20 font-quicksand"
+      className="w-full bg-bg-main font-quicksand"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Top Split Content Section */}
-        <div className="grid grid-cols-1 items-center justify-items-center gap-6 mt-4 lg:grid-cols-12 lg:gap-12 text-center lg:text-left">
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-12 lg:gap-12 text-center lg:text-left">
           {/* Left Text Column */}
           <div className="lg:col-span-6 flex flex-col items-center lg:items-start text-center lg:text-left">
             <h2
@@ -108,7 +108,7 @@ export default function AboutHero() {
             </ul>
 
             {/* Enquire CTA Button */}
-            <div className="mt-8">
+            {/* <div className="mt-8">
               <Button
                 href="/categories/sofas"
                 variant="primary"
@@ -117,7 +117,7 @@ export default function AboutHero() {
               >
                 Enquire Now
               </Button>
-            </div>
+            </div> */}
           </div>
 
           {/* Right Showcase Image Container */}
@@ -136,7 +136,7 @@ export default function AboutHero() {
         </div>
 
         {/* Bottom 4 Category Cards Grid */}
-        <div className="mt-16 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 lg:gap-6">
+        <div className="mt-12 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 lg:gap-6">
           {categories.map((cat) => (
             <div
               key={cat.id}

@@ -58,14 +58,17 @@ export default function GalleryGrid() {
 
   return (
     <>
-      {/* Reusable Common Page Banner */}
-      <PageBanner />
-
-      <SectionHeading className="pt-12" title="Gallery" />
+      <div className="mx-auto max-w-7xl w-full px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto w-full mt-12 max-w-7xl py-3 px-4 sm:px-6 lg:px-8 bg-bg-card border border-border-light font-quicksand rounded-xs">
+          <h2 className="text-primary font-bold text-2xl text-center">
+            Furniclass Gallery
+          </h2>
+        </div>
+      </div>
       {/* Main Gallery Grid Section */}
       <section
         aria-labelledby="gallery-grid-heading"
-        className="w-full bg-bg-main pt-4 pb-16 sm:pb-20 font-quicksand"
+        className="w-full bg-bg-main pt-6 font-quicksand"
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <h2 id="gallery-grid-heading" className="sr-only">
@@ -73,7 +76,7 @@ export default function GalleryGrid() {
           </h2>
 
           {/* 3 Columns Image Grid */}
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {galleryImages.map((image, idx) => (
               <div
                 key={image.id}
@@ -119,17 +122,6 @@ export default function GalleryGrid() {
                 </div>
               </div>
             ))}
-          </div>
-
-          {/* Load More Button */}
-          <div className="mt-12 flex justify-center">
-            <Button
-              variant="primary"
-              size="md"
-              ariaLabel="Load more gallery items"
-            >
-              Load More
-            </Button>
           </div>
         </div>
       </section>

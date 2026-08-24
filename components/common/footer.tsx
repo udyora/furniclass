@@ -37,7 +37,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="w-full font-quicksand">
+    <footer className="w-full font-quicksand mt-12">
       {/* Main Footer Section */}
       <div className="bg-primary text-white py-14 sm:py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -46,15 +46,29 @@ export default function Footer() {
             <div className="lg:col-span-5 pr-0 sm:pr-4 flex flex-col items-center text-center md:items-start md:text-left">
               <Link
                 href="/"
-                className="inline-flex items-center gap-3 text-dark hover:opacity-95 transition-opacity"
+                className="inline-flex items-center gap-3 text-white hover:opacity-95 transition-opacity"
               >
                 <Image
-                  width={200}
-                  height={28}
+                  width={38}
+                  height={38}
                   src="/footer-logo.svg"
                   alt="Furniclass Logo"
                   className="object-contain"
                 />
+                <div className="flex flex-col">
+                  {/* Domain Name */}
+                  <span className="font-quicksand text-lg font-extrabold tracking-tight text-white leading-none">
+                    furniclass.com
+                  </span>
+
+                  {/* Attractive Center Underline / Divider */}
+                  <span className="my-1 h-0.5 w-full rounded-full bg-white opacity-80" />
+
+                  {/* Subtitle */}
+                  <span className="font-quicksand text-xs font-bold uppercase text-white leading-none">
+                    Premium Make To Order Studio
+                  </span>
+                </div>
               </Link>
 
               <p className="mt-4 text-sm font-normal text-white/90 leading-relaxed lg:max-w-sm">
@@ -65,7 +79,7 @@ export default function Footer() {
                 make it easy to find furniture that reflects your personality
                 and lifestyle.
               </p>
-              <div className="flex items-center mt-6 justify-center md:justify-start gap-2.5">
+              {/* <div className="flex items-center mt-6 justify-center md:justify-start gap-2.5">
                 {socialLinks.map((social) => (
                   <a
                     key={social.id}
@@ -84,11 +98,11 @@ export default function Footer() {
                     />
                   </a>
                 ))}
-              </div>
+              </div> */}
             </div>
 
             {/* Combined Wrapper Div for Links, Policies & Information (grid-cols-3 till md screen) */}
-            <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-3 gap-8 text-center md:text-left">
+            <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-3 gap-4 text-center md:text-left">
               {/* 1. Quick Links */}
               <div className="flex flex-col items-center md:items-start">
                 <h3 className="text-lg font-bold text-white mb-4">
@@ -156,7 +170,7 @@ export default function Footer() {
                   Information
                 </h3>
                 <ul className="space-y-3 text-sm font-normal text-white/90 flex flex-col items-center md:items-start">
-                  <li className="flex items-center justify-center md:justify-start gap-2.5">
+                  <li className="flex justify-center md:justify-start gap-2.5">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 24 24"
@@ -171,7 +185,10 @@ export default function Footer() {
                       <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
                       <circle cx="12" cy="10" r="3" />
                     </svg>
-                    <span>Mlerna, Faridabad</span>
+                    <span className="lowercase">
+                      3F-05, OZONE CENTER, SECTOR 12, FARIDABAD, 121007,
+                      HARYANA, DELHI NCR
+                    </span>
                   </li>
                   <li className="flex items-center justify-center md:justify-start gap-2.5">
                     <svg
@@ -222,7 +239,7 @@ export default function Footer() {
 
       {/* Bottom Copyright Bar */}
       <div className="bg-gold text-white text-center py-3.5 px-4 font-normal">
-        © 2026 Furniclass Craftsmanship Ltd. All rights reserved.
+        © 2026 Furniclass. All rights reserved.
       </div>
     </footer>
   );

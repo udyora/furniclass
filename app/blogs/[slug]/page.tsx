@@ -96,13 +96,13 @@ export default function BlogDetailPage({ params }: BlogDetailPageProps) {
   };
 
   return (
-    <main className="min-h-screen font-quicksand bg-bg-main pb-20">
+    <main className="font-quicksand bg-bg-main">
       {/* Top Banner with exact title: The Charm of Minimalist Interiors */}
       <PageBanner />
 
-      <section className="py-12 sm:py-16">
+      <section className="">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 gap-10 lg:grid-cols-12">
+          <div className="grid grid-cols-1 gap-6 lg:grid-cols-12">
             {/* Main Blog Content Area */}
             <article className="lg:col-span-8 bg-bg-card p-6 sm:p-10 rounded-xs border border-border-light shadow-xs">
               {/* Featured Image */}

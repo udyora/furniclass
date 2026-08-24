@@ -12,7 +12,7 @@ export default function AboutUsPage() {
   return (
     <main>
       <PageBanner />
-      <SectionHeading className="pt-12 lg:text-left" title="About Us" />
+
       <AboutHero />
     </main>
   );

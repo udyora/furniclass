@@ -58,20 +58,20 @@ export default function Category() {
   return (
     <section
       aria-labelledby="category-heading"
-      className="w-full pt-16 sm:pt-20 lg:pt-24 overflow-hidden"
+      className="w-full overflow-hidden"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <SectionHeading
+        {/* <SectionHeading
           id="category-heading"
           title="Categories"
           subtitle="Create beautiful, comfortable spaces with our premium furniture collection"
-        />
+        /> */}
 
         {/* Category Swiper Slider Showcase */}
-        <div className="mt-6 w-full overflow-hidden">
+        <div className="w-full overflow-hidden">
           <Swiper
             modules={[Autoplay, Pagination]}
-            spaceBetween={24}
+            spaceBetween={40}
             slidesPerView={1}
             loop={true}
             autoplay={{
@@ -143,7 +143,7 @@ export default function Category() {
           </Swiper>
 
           {/* Custom Pagination Container */}
-          <div className="category-swiper-pagination flex items-center justify-center gap-2 pt-2! pb-4! [&_.swiper-pagination-bullet]:h-4! [&_.swiper-pagination-bullet]:w-4! [&_.swiper-pagination-bullet]:bg-gold/40 [&_.swiper-pagination-bullet-active]:bg-gold! [&_.swiper-pagination-bullet-active]:scale-125 [&_.swiper-pagination-bullet]:transition-all" />
+          <div className="category-swiper-pagination flex items-center justify-center gap-2 pt-2! pb-1! [&_.swiper-pagination-bullet]:h-4! [&_.swiper-pagination-bullet]:w-4! [&_.swiper-pagination-bullet]:bg-gold/40 [&_.swiper-pagination-bullet-active]:bg-gold! [&_.swiper-pagination-bullet-active]:scale-125 [&_.swiper-pagination-bullet]:transition-all" />
         </div>
       </div>
     </section>
