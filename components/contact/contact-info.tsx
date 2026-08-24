@@ -27,7 +27,8 @@ export default function ContactInfo() {
           <div>
             <h3 className="text-xl font-bold">Address</h3>
             <p className="mt-1 text-sm text-white/90 leading-relaxed">
-              Mlerna, Faridabad, Haryana, India
+              3F-05, Ozone Center, Sector 12, Faridabad, 121007, Haryana, Delhi
+              NCR
             </p>
           </div>
         </div>
