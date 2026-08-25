@@ -32,7 +32,7 @@ export default function Hero() {
     <>
       <section
         aria-labelledby="hero-heading"
-        className="w-full overflow-x-hidden bg-bg-cream py-8 sm:py-12 font-quicksand mb-12"
+        className="w-full overflow-x-hidden bg-bg-cream py-12 font-quicksand mb-12"
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           {/* Main Wrapper */}

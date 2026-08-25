@@ -78,20 +78,16 @@ export default function RoomInspiration() {
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-10">
           {/* Left Content Column */}
           <div className="lg:col-span-6">
-            <div className="font-quicksand max-lg:text-center text-sm font-bold tracking-widest text-primary uppercase">
-              Client Feedback
-            </div>
-
             <h2
               id="testimonials-heading"
               className="mt-3 font-quicksand max-lg:text-center text-3xl font-bold text-dark sm:text-4xl lg:text-[40px] leading-tight"
             >
-              Loved by Indian Homeowners &amp; Designers
+              Stories from Our Clients
             </h2>
             <p className="mt-4 font-quicksand max-lg:text-center text-base sm:text-lg font-normal text-muted-light leading-relaxed">
-              Read real stories from our valued homeowners, architects, and
-              interior stylists across India who transformed their living spaces
-              with our bespoke build-to-order furniture collection.
+              Real stories from businesses, architects, and interior stylists
+              across India who transformed their commercial spaces with our
+              bespoke, build-to-order furniture collection.
             </p>
 
             <div className="mt-8 max-lg:flex max-lg:justify-center">

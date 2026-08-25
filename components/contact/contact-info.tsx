@@ -2,7 +2,7 @@ export default function ContactInfo() {
   return (
     <div className="bg-primary h-full text-white p-6 border border-border-light space-y-6 rounded-xs font-quicksand">
       <div className="space-y-8">
-        <h2 className="text-white font-bold border-b border-b-white pb-4 text-2xl text-center lg:text-start">
+        <h2 className="text-white font-bold border-b border-b-white pb-4 text-lg text-center lg:text-start">
           Get In Touch With Us
         </h2>
         {/* Address */}
