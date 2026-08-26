@@ -20,7 +20,7 @@ export default function AboutHero() {
   const features: FeaturePoint[] = [
     { id: "quality", text: "Experience Unparalleled Quality" },
     { id: "durability", text: "Built to Last for Generations" },
-    { id: "trusted", text: "Loved by Customers Worldwide" },
+    { id: "trusted", text: "Loved by Customers Nationwide" },
   ];
 
   const categories: MiniCategory[] = [
