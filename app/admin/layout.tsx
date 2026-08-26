@@ -115,10 +115,24 @@ export default function AdminLayout({
           <div className="px-2 py-3 border-b border-border-light flex items-center justify-between">
             <Link
               href="/admin/dashboard"
-              className="inline-flex items-center gap-2.5 text-xl md:text-2xl font-bold"
+              className="inline-flex items-center gap-3 text-dark hover:opacity-95 transition-opacity"
             >
-              <Image width={20} height={50} src={"/logo.svg"} alt="logo" />
-              <span>Furniclass</span>
+              <Image
+                width={200}
+                height={58}
+                src="/logo.svg"
+                alt="Furniclass Logo"
+                className="object-contain"
+              />
+              {/* <div className="flex flex-col">
+            <span className="font-quicksand text-[29px] text-start font-extrabold text-dark leading-none">
+              furniclass<span className="text-primary">.com</span>
+            </span>
+            <span className="my-1 h-0.5 w-full rounded-full bg-primary opacity-80" />
+            <span className="font-quicksand text-xs font-bold uppercase text-muted-light tracking-[0.1px] leading-none">
+              Premium Make To Order Studio
+            </span>
+          </div> */}
             </Link>
             <button
               onClick={() => setMobileMenuOpen(false)}

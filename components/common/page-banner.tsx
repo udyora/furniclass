@@ -40,7 +40,7 @@ export default function Hero() {
             {/* 1. Fixed Left Image (Clickable & Larger) */}
             <div
               onClick={() => setIsModalOpen(true)}
-              className="relative h-44 w-44 sm:h-56 sm:w-56 md:h-64 md:w-64 bg-[#040B1E] shrink-0 z-20 overflow-hidden border border-border-light p-3 shadow-md cursor-pointer hover:scale-105 active:scale-95 transition-all duration-200"
+              className="relative size-38 sm:size-63 bg-[#040B1E] shrink-0 z-20 overflow-hidden border border-border-light p-3 shadow-md cursor-pointer hover:scale-105 active:scale-95 transition-all duration-200"
               role="button"
               tabIndex={0}
             >
@@ -60,7 +60,7 @@ export default function Hero() {
                 {marqueeItems.map((item, index) => (
                   <div
                     key={index}
-                    className="relative h-44 w-44 sm:h-56 sm:w-56 md:h-64 md:w-64 shrink-0 overflow-hidden border border-border-light shadow-md transition-transform duration-300 hover:scale-[1.03]"
+                    className="relative size-38 sm:size-63 shrink-0 overflow-hidden border border-border-light shadow-md transition-transform duration-300 hover:scale-[1.03]"
                   >
                     <Image
                       src={item.src}
