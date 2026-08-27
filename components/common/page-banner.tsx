@@ -32,11 +32,11 @@ export default function Hero() {
     <>
       <section
         aria-labelledby="hero-heading"
-        className="w-full overflow-x-hidden bg-bg-cream py-12 font-quicksand mb-12"
+        className="w-full overflow-x-hidden bg-bg-cream py-4 sm:py-6 lg:py-8 font-quicksand mb-12"
       >
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto flex max-w-7xl items-center px-4 sm:px-6 lg:px-8">
           {/* Main Wrapper */}
-          <div className="flex items-center gap-2 overflow-hidden">
+          <div className="flex w-full items-center gap-2 overflow-hidden">
             {/* 1. Fixed Left Image (Clickable & Larger) */}
             <div
               onClick={() => setIsModalOpen(true)}
@@ -48,7 +48,7 @@ export default function Hero() {
                 src={fixedImage.src}
                 alt={fixedImage.alt}
                 fill
-                sizes="(max-width: 640px) 176px, (max-width: 768px) 224px, 256px"
+                sizes="(max-width: 640px) 176px, 256px"
                 className="object-contain p-2"
                 priority
               />
@@ -66,7 +66,7 @@ export default function Hero() {
                       src={item.src}
                       alt={item.alt}
                       fill
-                      sizes="(max-width: 640px) 176px, (max-width: 768px) 224px, 256px"
+                      sizes="(max-width: 640px) 176px, 256px"
                       className="object-cover"
                     />
                   </div>

@@ -27,28 +27,20 @@ export default function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 bg-bg-main/95 backdrop-blur-md shadow-xs border-b border-border-light font-quicksand">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
+      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Brand Logo Link */}
         <Link
           href="/"
           className="inline-flex items-center gap-3 text-dark hover:opacity-95 transition-opacity"
         >
           <Image
-            width={200}
+            width={230}
             height={58}
             src="/logo.svg"
             alt="Furniclass Logo"
             className="object-contain"
+            priority
           />
-          {/* <div className="flex flex-col">
-            <span className="font-quicksand text-[29px] text-start font-extrabold text-dark leading-none">
-              furniclass<span className="text-primary">.com</span>
-            </span>
-            <span className="my-1 h-0.5 w-full rounded-full bg-primary opacity-80" />
-            <span className="font-quicksand text-xs font-bold uppercase text-muted-light tracking-[0.1px] leading-none">
-              Premium Make To Order Studio
-            </span>
-          </div> */}
         </Link>
         {/* Primary Navigation for lg Screens */}
         <nav
@@ -124,7 +116,7 @@ export default function Navbar() {
 
       {/* Mobile Drawer Overlay + Smooth Slide Panel */}
       <div
-        className={`fixed inset-x-0 top-[61px] bottom-0 z-40 bg-dark/40 backdrop-blur-xs transition-opacity duration-300 lg:hidden ${
+        className={`fixed inset-x-0 top-20 bottom-0 z-40 bg-dark/40 backdrop-blur-xs transition-opacity duration-300 lg:hidden ${
           isOpen
             ? "opacity-100 pointer-events-auto"
             : "opacity-0 pointer-events-none"
