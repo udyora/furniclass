@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
+import MainContactForm from "./contact/main-contact-form";
 import { X } from "lucide-react";
 
 const fixedImage = {
@@ -9,6 +10,7 @@ const fixedImage = {
   alt: "Furniclass Logo",
 };
 
+// Public folder ki images
 const galleryImages = [
   { src: "/gallery-one.webp", alt: "Modern Interior One" },
   { src: "/modern-loung-soffa.webp", alt: "Modern Lounge Sofa" },
@@ -32,17 +34,18 @@ export default function Hero() {
     <>
       <section
         aria-labelledby="hero-heading"
-        className="w-full overflow-x-hidden bg-bg-cream py-4 sm:py-6 lg:py-8 font-quicksand mb-12"
+        className="w-full overflow-x-hidden bg-bg-cream py-4 sm:py-6 lg:py-8 font-quicksand"
       >
         <div className="mx-auto flex max-w-7xl items-center px-4 sm:px-6 lg:px-8">
-          {/* Main Wrapper */}
+          {/* Main Wrapper with Fixed Left Image + Marquee Slider */}
           <div className="flex w-full items-center gap-2 overflow-hidden">
-            {/* 1. Fixed Left Image (Clickable & Larger) */}
+            {/* 1. Fixed Left Image (Clickable trigger for Modal) */}
             <div
               onClick={() => setIsModalOpen(true)}
-              className="relative size-38 sm:size-63 bg-[#040B1E] shrink-0 z-20 overflow-hidden border border-border-light p-3 shadow-md cursor-pointer hover:scale-105 active:scale-95 transition-all duration-200"
+              className="relative size-38 sm:size-63 bg-[#010E1E] shrink-0 z-20 overflow-hidden border border-border-light p-3 shadow-md cursor-pointer hover:scale-105 active:scale-95 transition-all duration-200"
               role="button"
               tabIndex={0}
+              aria-label="Enlarge logo preview"
             >
               <Image
                 src={fixedImage.src}
@@ -54,7 +57,7 @@ export default function Hero() {
               />
             </div>
 
-            {/* 2. Marquee Slider (Square 1:1 Aspect Ratio) */}
+            {/* 2. Marquee Wrapper for Sliding Images (Square 1:1 Aspect Ratio) */}
             <div className="relative flex-1 overflow-hidden">
               <div className="animate-marquee flex items-center w-max gap-0">
                 {marqueeItems.map((item, index) => (
@@ -77,12 +80,21 @@ export default function Hero() {
         </div>
       </section>
 
-      {/* 3. Modal */}
+      {/* 3. Contact Form */}
+      <div
+        id="form-section"
+        className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 mt-12"
+      >
+        <MainContactForm />
+      </div>
+
+      {/* 4. Full-Screen Backdrop Modal */}
       {isModalOpen && (
         <div
           onClick={() => setIsModalOpen(false)}
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md p-4 transition-all duration-300"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md p-4 transition-all duration-300 animate-fadeIn"
         >
+          {/* Close Button */}
           <button
             onClick={() => setIsModalOpen(false)}
             className="absolute top-6 right-6 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer"
@@ -91,9 +103,10 @@ export default function Hero() {
             <X className="w-6 h-6" />
           </button>
 
+          {/* Modal Enlarged Image Container */}
           <div
             onClick={(e) => e.stopPropagation()}
-            className="relative w-full max-w-md sm:max-w-lg aspect-square bg-[#040B1E] border-2 border-white/20 shadow-2xl overflow-hidden p-6"
+            className="relative w-full max-w-md sm:max-w-lg aspect-square bg-[#040B1E] border-2 border-white/20 shadow-2xl overflow-hidden p-6 animate-scaleUp"
           >
             <Image
               src={fixedImage.src}
